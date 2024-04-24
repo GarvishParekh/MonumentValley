@@ -6,8 +6,11 @@ public class BallFunction : MonoBehaviour
     Rigidbody playerRB;
     WaitForSeconds cooldownTime = new WaitForSeconds(0.2f);
     SFXManager sfxManager;
+    UIManager uiManager;
 
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private Transform ballModel;
+    [SerializeField] private Transform shadowModel;
     [SerializeField] private GameObject dropShadow;
     [SerializeField] private GameObject nextLevelButton;
     
@@ -20,11 +23,13 @@ public class BallFunction : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
         playerData.grounCheck = GrounCheck.ONGOING;
         playerData.cooldownStatus = CooldownStatus.READY;
+
     }
 
     private void Start()
     {
         sfxManager = SFXManager.instance;
+        uiManager = UIManager.instance;
     }
 
     private void Update()
@@ -79,10 +84,19 @@ public class BallFunction : MonoBehaviour
 
     public void ResetBall()
     {
+        ResetAnimation();
         StopPlayerMotion();
         playerData.grounCheck = GrounCheck.ONGOING;
         playerRB.transform.position = startingPositon;
         dropShadow?.SetActive(true);    
+    }
+
+    private void ResetAnimation()
+    {
+        ballModel.localScale = Vector3.zero;
+        shadowModel.localScale = Vector3.zero;
+        LeanTween.scale(ballModel.gameObject, Vector3.one, 0.3f).setEaseInOutSine();
+        LeanTween.scale(shadowModel.gameObject, Vector3.one, 0.3f).setEaseInOutSine();
     }
 
     public void LevelComplete(Vector3 finalPosition)
@@ -93,10 +107,9 @@ public class BallFunction : MonoBehaviour
         playerRB.transform.position = finalPosition;
         
         dropShadow?.SetActive(true);
-        nextLevelButton?.SetActive(true);
+        uiManager.LevelCompleteUpdate();
 
         sfxManager.PlayLevelCompleteSound();
-
     }
 
     private void StopPlayerMotion()

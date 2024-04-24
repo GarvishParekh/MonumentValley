@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    UIManager uiManager;
+
     [SerializeField] private LevelData levelData;
     [SerializeField] private CameraData cameraData;
     [SerializeField] private List<GameObject> Levels = new List<GameObject>();
@@ -13,9 +15,14 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject mainCamera;
 
-    private void Start()
+    private void Awake()
     {
         levelData.currentLevel = PlayerPrefs.GetInt(ConstantKeys.LEVEL_INDEX, 0);
+    }
+
+    private void Start()
+    {
+        uiManager = UIManager.instance;
         EnableLevel();
         CameraOpeningAnimation();
     }
@@ -47,6 +54,7 @@ public class LevelManager : MonoBehaviour
         levelData.currentLevel += 1;
         PlayerPrefs.SetInt(ConstantKeys.LEVEL_INDEX, levelData.currentLevel);
 
+        uiManager.LevelEndAnimation();
         CameraClosingAnimation();
     }
 

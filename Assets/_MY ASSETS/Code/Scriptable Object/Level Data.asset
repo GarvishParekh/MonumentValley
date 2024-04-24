@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Level Data
   m_EditorClassIdentifier: 
   currentLevel: 0
+  levelsInformation:
+  - LevelName: Line
+  - LevelName: Right
+  - LevelName: Turn
