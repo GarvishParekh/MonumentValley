@@ -1,0 +1,72 @@
+using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
+public class LevelManager : MonoBehaviour
+{
+    [SerializeField] private LevelData levelData;
+    [SerializeField] private CameraData cameraData;
+    [SerializeField] private List<GameObject> Levels = new List<GameObject>();
+
+    [SerializeField] private GameObject commingSoonCanvas;
+    [SerializeField] private GameObject mainCanvas;
+
+    [SerializeField] private GameObject mainCamera;
+
+    private void Start()
+    {
+        levelData.currentLevel = PlayerPrefs.GetInt(ConstantKeys.LEVEL_INDEX, 0);
+        EnableLevel();
+        CameraOpeningAnimation();
+    }
+
+    private void EnableLevel()
+    {
+        if (levelData.currentLevel >= Levels.Count)
+        {
+            commingSoonCanvas.SetActive(true);
+            mainCanvas.SetActive(false);
+            PlayerPrefs.DeleteKey(ConstantKeys.LEVEL_INDEX);
+            return;
+        }
+        foreach (GameObject level in Levels) 
+        {
+            if (level.transform.GetSiblingIndex() == levelData.currentLevel)
+            {
+                level.SetActive(true);
+            }
+            else
+            {
+                level.SetActive(false);
+            }
+        }
+    }
+
+    public void NextLevelButton()
+    {
+        levelData.currentLevel += 1;
+        PlayerPrefs.SetInt(ConstantKeys.LEVEL_INDEX, levelData.currentLevel);
+
+        CameraClosingAnimation();
+    }
+
+    public void HardReset()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void CameraOpeningAnimation()
+    {
+        mainCamera.transform.position = new Vector3(0, cameraData.cameraStartingpoint, 0);
+        LeanTween.moveY(mainCamera, cameraData.cameraGameplayPoint, cameraData.animationSpeed).setEaseInOutSine();
+    }
+
+    private void CameraClosingAnimation()
+    {
+        LeanTween.moveY(mainCamera, cameraData.cameraEndPoint, cameraData.animationSpeed).setEaseInOutSine().setOnComplete(()=>
+        {
+            SceneManager.LoadScene(0);
+        });
+    }
+
+}
