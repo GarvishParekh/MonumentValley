@@ -6,14 +6,26 @@ public class LevelManager : MonoBehaviour
 {
     UIManager uiManager;
 
+    [Header ("<size=15>[SCRIPTS]")]
+    [SerializeField] private CameraSettings cameraSettings;
+    [SerializeField] private BallFunction ballFunction;
+
+    [Header ("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private LevelData levelData;
     [SerializeField] private CameraData cameraData;
+
+    [Header ("<size=15>[COMPONENTS]")]
+    [SerializeField] private GameObject mainCamera;
+
+    [Header ("<size=15>[LEVELS]")]
     [SerializeField] private List<GameObject> Levels = new List<GameObject>();
 
+    [Header ("<size=15>[UI]")]
     [SerializeField] private GameObject commingSoonCanvas;
     [SerializeField] private GameObject mainCanvas;
 
-    [SerializeField] private GameObject mainCamera;
+    LevelInformation currentLevelInfo;
+
 
     private void Awake()
     {
@@ -22,22 +34,36 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        if (levelData.currentLevel < levelData.levelsInformation.Length)
+        {
+            currentLevelInfo = levelData.levelsInformation[levelData.currentLevel];
+        }
         uiManager = UIManager.instance;
-        EnableLevel();
+        SetupLevel();
         CameraOpeningAnimation();
     }
 
-    private void EnableLevel()
+    private void SetupLevel()
     {
         if (levelData.currentLevel >= Levels.Count)
         {
             commingSoonCanvas.SetActive(true);
+
             mainCanvas.SetActive(false);
             PlayerPrefs.DeleteKey(ConstantKeys.LEVEL_INDEX);
+
             return;
         }
         foreach (GameObject level in Levels) 
         {
+            //set-up camera
+            if (currentLevelInfo != null)
+            {
+                cameraSettings.ChangeZoomLevel(currentLevelInfo.startingZoomLevel);
+                ballFunction.ChangeMyPosition(currentLevelInfo.ballSartingposition);
+            }
+
+            //enable level
             if (level.transform.GetSiblingIndex() == levelData.currentLevel)
             {
                 level.SetActive(true);
@@ -66,7 +92,13 @@ public class LevelManager : MonoBehaviour
     private void CameraOpeningAnimation()
     {
         mainCamera.transform.position = new Vector3(0, cameraData.cameraStartingpoint, 0);
-        LeanTween.moveY(mainCamera, cameraData.cameraGameplayPoint, cameraData.animationSpeed).setEaseInOutSine();
+        LeanTween.moveY(mainCamera, cameraData.cameraGameplayPoint, cameraData.animationSpeed).setEaseInOutSine().setOnComplete(() =>
+        {
+            if (currentLevelInfo != null)
+            {
+                cameraSettings.SetLevelCenterPoint(currentLevelInfo.levelCenterPoint);
+            }
+        });
     }
 
     private void CameraClosingAnimation()

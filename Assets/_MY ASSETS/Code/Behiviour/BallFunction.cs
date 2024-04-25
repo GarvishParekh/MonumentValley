@@ -8,14 +8,16 @@ public class BallFunction : MonoBehaviour
     SFXManager sfxManager;
     UIManager uiManager;
 
+    [SerializeField] private LevelData levelData;
+
+    [SerializeField] private SphereCollider myCollider;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private Transform ballModel;
     [SerializeField] private Transform shadowModel;
     [SerializeField] private GameObject dropShadow;
     [SerializeField] private GameObject nextLevelButton;
-    
+
     [SerializeField] private Vector3 startingPositon;
-    [SerializeField] private Vector3 endPosition;
 
 
     private void Awake()
@@ -42,16 +44,34 @@ public class BallFunction : MonoBehaviour
         switch (playerData.cooldownStatus)
         {
             case CooldownStatus.READY:
-                if (other.CompareTag (playerData.staffTag))
+                if (other.CompareTag(playerData.staffTag))
                 {
                     playerRB.velocity = -other.transform.forward * playerData.playerSpeed;
                     playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
 
                     sfxManager.PlayHitSound();
 
-                    StartCoroutine(nameof(CoolingDown));   
+                    StartCoroutine(nameof(CoolingDown));
                 }
-            break;
+                else if (other.CompareTag(playerData.springTag))
+                {
+                    Vector3 lastVelocity = playerRB.velocity;
+                    playerRB.velocity = Vector3.zero;
+                    Vector3 getEndPoint = other.GetComponent<StaffFunction>().GetEndPosition();
+                    playerData.grounCheck = GrounCheck.STOP;
+                    LeanTween.move(gameObject.gameObject, getEndPoint, 0.4f).setEaseInOutSine();
+                    LeanTween.moveY(ballModel.gameObject, 2f, 0.2f).setEaseInOutSine().setLoopPingPong(1).setOnComplete(()=>
+                    {
+                        playerRB.velocity = lastVelocity;
+                        playerData.grounCheck = GrounCheck.ONGOING;
+                    });
+                    playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
+
+                    sfxManager.PlayHitSound();
+
+                    StartCoroutine(nameof(CoolingDown));
+                }
+                break;
         }
 
         if (other.CompareTag(playerData.completeTag))
@@ -60,11 +80,11 @@ public class BallFunction : MonoBehaviour
             LevelComplete(other.transform.GetChild(0).position);
         }
     }
-    
+
     private IEnumerator CoolingDown()
     {
         yield return cooldownTime;
-        playerData.cooldownStatus = CooldownStatus.READY;  
+        playerData.cooldownStatus = CooldownStatus.READY;
     }
 
     private void GroundCheck()
@@ -74,6 +94,7 @@ public class BallFunction : MonoBehaviour
             case GrounCheck.ONGOING:
                 if (!Physics.Raycast(transform.position, -Vector3.up, playerData.rayCastLenght, playerData.groundLayer))
                 {
+                    myCollider.isTrigger = false;
                     Debug.Log("Fall");
                     playerRB.useGravity = true;
                     dropShadow.SetActive(false);
@@ -87,8 +108,9 @@ public class BallFunction : MonoBehaviour
         ResetAnimation();
         StopPlayerMotion();
         playerData.grounCheck = GrounCheck.ONGOING;
-        playerRB.transform.position = startingPositon;
-        dropShadow?.SetActive(true);    
+        playerRB.transform.position = levelData.levelsInformation[levelData.currentLevel].ballSartingposition;
+        dropShadow?.SetActive(true);
+        myCollider.isTrigger = true;
     }
 
     private void ResetAnimation()
@@ -105,7 +127,7 @@ public class BallFunction : MonoBehaviour
 
         playerData.grounCheck = GrounCheck.STOP;
         playerRB.transform.position = finalPosition;
-        
+
         dropShadow?.SetActive(true);
         uiManager.LevelCompleteUpdate();
 
@@ -116,5 +138,10 @@ public class BallFunction : MonoBehaviour
     {
         playerRB.velocity = Vector3.zero;
         playerRB.useGravity = false;
+    }
+
+    public void ChangeMyPosition(Vector3 desirePosition)
+    {
+        transform.position = desirePosition;
     }
 }

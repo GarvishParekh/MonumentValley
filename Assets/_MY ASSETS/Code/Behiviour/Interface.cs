@@ -5,3 +5,8 @@ public interface ICanvasAnimation
     public void UpdateAnimation();
     public void ResetElements();
 }
+
+public interface IOneClickAnimation
+{
+    public void Animate();
+}

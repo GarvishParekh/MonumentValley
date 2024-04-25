@@ -12,7 +12,6 @@ public class MainClick : MonoBehaviour
 {
     [SerializeField] private StaffAnimationState staffAnimationState;
     [SerializeField] private List<GameObject> staffsCollection = new List<GameObject>();
-    [SerializeField] private float staffSpeed = 0.15f;
     [SerializeField] private WaitForSeconds animationScale = new WaitForSeconds(0.4f);
 
     private void Awake()
@@ -51,10 +50,16 @@ public class MainClick : MonoBehaviour
         staffAnimationState = StaffAnimationState.ANIMATION;   
         foreach (GameObject staff in staffsCollection)
         {
-            LeanTween.moveLocalZ(staff, 1.2f, staffSpeed).setEaseInSine().setLoopPingPong(1);
+            staff.GetComponent<IOneClickAnimation>().Animate();
         }
 
         yield return animationScale;
         staffAnimationState = StaffAnimationState.STATIC;   
     }
+
+    public void AddToStaffCollection(GameObject _staff)
+    {
+        staffsCollection.Add(_staff);   
+    }
+
 }

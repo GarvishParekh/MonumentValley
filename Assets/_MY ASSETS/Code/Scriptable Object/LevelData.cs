@@ -4,6 +4,7 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public int currentLevel = 0;
+    public float animationSpeed = 0.2f;
     public LevelInformation[] levelsInformation;    
 }
 
@@ -11,4 +12,7 @@ public class LevelData : ScriptableObject
 public class LevelInformation
 {
     public string LevelName;
+    public float startingZoomLevel = 5;
+    public Vector3 levelCenterPoint = Vector3.zero;
+    public Vector3 ballSartingposition = Vector3.zero;
 }

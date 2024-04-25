@@ -26,5 +26,6 @@ public class PlayerData : ScriptableObject
     [Header ("<size=15>[ COLLISION DETAILS ]")]
     public LayerMask groundLayer;
     public string staffTag;
+    public string springTag;
     public string completeTag;
 }

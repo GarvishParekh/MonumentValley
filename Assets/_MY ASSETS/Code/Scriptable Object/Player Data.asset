@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   cooldownStatus: 0
-  grounCheck: 1
+  grounCheck: 0
   playerSpeed: 5
   rayCastLenght: 1.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   staffTag: Staff
+  springTag: Spring
   completeTag: Complete

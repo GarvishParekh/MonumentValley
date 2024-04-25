@@ -5,6 +5,7 @@ public class CameraSettings : MonoBehaviour
     public Transform cameraHolder;
     public Camera mainCamera;
 
+    [SerializeField] private Transform traget; 
     public float rotationAngle = 0;
     public float lerpedRotation = 0;
     public float rotationSpeed = 0.2f;
@@ -29,5 +30,19 @@ public class CameraSettings : MonoBehaviour
         orthographicValue = Mathf.Clamp(orthographicValue, minZoomValue, maxZoomValue);
         lerpedOrthographicValue = Mathf.MoveTowards(lerpedOrthographicValue, orthographicValue, Time.deltaTime * OrthographicSmoothness);
         mainCamera.orthographicSize = lerpedOrthographicValue;
+    }
+
+    public void ChangeZoomLevel(float desireZoomLevel)
+    {
+        mainCamera.orthographicSize = desireZoomLevel;
+        orthographicValue = desireZoomLevel;
+        lerpedOrthographicValue = desireZoomLevel; 
+    }
+
+    public void SetLevelCenterPoint(Vector3 centerPosition)
+    {
+        mainCamera.transform.SetParent(null);
+        cameraHolder.position = centerPosition;
+        mainCamera.transform.SetParent(cameraHolder);
     }
 }
