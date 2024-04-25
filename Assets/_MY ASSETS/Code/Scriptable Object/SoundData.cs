@@ -6,4 +6,5 @@ public class SoundData : ScriptableObject
     public AudioClip backgroundMusic;
     public AudioClip hitSound;
     public AudioClip levelCompleteSound;
+    public AudioClip jumpSound;
 }

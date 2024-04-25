@@ -39,3 +39,11 @@ MonoBehaviour:
     startingZoomLevel: 5
     levelCenterPoint: {x: 0, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
+  - LevelName: Its's the right way
+    startingZoomLevel: 5
+    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    ballSartingposition: {x: 0, y: 0.8, z: 0}
+  - LevelName: Back To Back
+    startingZoomLevel: 5
+    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    ballSartingposition: {x: 0, y: 0.8, z: 0}

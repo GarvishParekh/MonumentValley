@@ -15,3 +15,4 @@ MonoBehaviour:
   backgroundMusic: {fileID: 8300000, guid: a1071628f2a69ba49ac3bb7de8e8fbf0, type: 3}
   hitSound: {fileID: 8300000, guid: 90a800bad8eed8f4282085351c927b26, type: 3}
   levelCompleteSound: {fileID: 8300000, guid: 33e95778c7cf27e4eb7a555a170a3b85, type: 3}
+  jumpSound: {fileID: 8300000, guid: 345effca3fa6ca743a6cb8aa8b505522, type: 3}

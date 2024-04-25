@@ -55,20 +55,26 @@ public class BallFunction : MonoBehaviour
                 }
                 else if (other.CompareTag(playerData.springTag))
                 {
+                    // manager velocity
                     Vector3 lastVelocity = playerRB.velocity;
                     playerRB.velocity = Vector3.zero;
+
+                    // get jump end point
                     Vector3 getEndPoint = other.GetComponent<StaffFunction>().GetEndPosition();
                     playerData.grounCheck = GrounCheck.STOP;
-                    LeanTween.move(gameObject.gameObject, getEndPoint, 0.4f).setEaseInOutSine();
-                    LeanTween.moveY(ballModel.gameObject, 2f, 0.2f).setEaseInOutSine().setLoopPingPong(1).setOnComplete(()=>
+
+                    // jump animation
+                    LeanTween.move(gameObject.gameObject, getEndPoint, 0.4f).setEaseOutSine();
+                    LeanTween.moveY(ballModel.gameObject, 2f, 0.2f).setEaseOutSine().setLoopPingPong(1).setOnComplete(()=>
                     {
+                        // restore velocity
                         playerRB.velocity = lastVelocity;
                         playerData.grounCheck = GrounCheck.ONGOING;
                     });
                     playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
 
-                    sfxManager.PlayHitSound();
-
+                    // play sound
+                    sfxManager.PlayJumpSound();
                     StartCoroutine(nameof(CoolingDown));
                 }
                 break;
@@ -111,6 +117,8 @@ public class BallFunction : MonoBehaviour
         playerRB.transform.position = levelData.levelsInformation[levelData.currentLevel].ballSartingposition;
         dropShadow?.SetActive(true);
         myCollider.isTrigger = true;
+        playerRB.isKinematic = true;
+        playerRB.isKinematic = false;
     }
 
     private void ResetAnimation()

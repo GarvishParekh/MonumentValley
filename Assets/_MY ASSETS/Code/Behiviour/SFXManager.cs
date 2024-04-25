@@ -20,4 +20,9 @@ public class SFXManager : MonoBehaviour
     {
         audioSource.PlayOneShot(soundData.levelCompleteSound);
     }
+
+    public void PlayJumpSound()
+    {
+        audioSource.PlayOneShot(soundData.jumpSound);
+    }
 }
