@@ -20,6 +20,8 @@ public class PlayerData : ScriptableObject
     public GrounCheck grounCheck;
     public float playerSpeed;
 
+    public Vector3 playerPosition;
+
     [Header ("<size=15>[ RAYCAST DETAILS ]")]
     public float rayCastLenght = 2;
 

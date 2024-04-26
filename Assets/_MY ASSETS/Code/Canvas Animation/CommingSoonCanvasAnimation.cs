@@ -7,7 +7,9 @@ public class CommingSoonCanvasAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        LeanTween.moveLocal(mainText, Vector3.zero, 1.5f).setEaseInOutSine();
-        LeanTween.moveLocal(buttonImage, Vector3.zero, 0.5f).setEaseInOutSine();
+        LeanTween.moveLocal(mainText, Vector3.zero, 1.5f).setEaseInOutSine().setOnComplete(()=>
+        {
+            LeanTween.moveLocal(buttonImage, Vector3.zero, 0.5f).setEaseInOutSine();
+        });
     }
 }

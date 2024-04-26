@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class BallFunction : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class BallFunction : MonoBehaviour
 
     [SerializeField] private Vector3 startingPositon;
 
+    LevelInformation currentLevelInfo;
+
 
     private void Awake()
     {
@@ -32,11 +35,18 @@ public class BallFunction : MonoBehaviour
     {
         sfxManager = SFXManager.instance;
         uiManager = UIManager.instance;
+
+        if (levelData.currentLevel < levelData.levelsInformation.Length)
+        {
+            currentLevelInfo = levelData.levelsInformation[levelData.currentLevel];
+        }
     }
 
     private void Update()
     {
         GroundCheck();
+        AutoResetCheck();
+        UpdatePlayerPosition();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -114,7 +124,10 @@ public class BallFunction : MonoBehaviour
         ResetAnimation();
         StopPlayerMotion();
         playerData.grounCheck = GrounCheck.ONGOING;
-        playerRB.transform.position = levelData.levelsInformation[levelData.currentLevel].ballSartingposition;
+        if (currentLevelInfo != null)
+        {
+            playerRB.transform.position = currentLevelInfo.ballSartingposition;
+        }
         dropShadow?.SetActive(true);
         myCollider.isTrigger = true;
         playerRB.isKinematic = true;
@@ -151,5 +164,18 @@ public class BallFunction : MonoBehaviour
     public void ChangeMyPosition(Vector3 desirePosition)
     {
         transform.position = desirePosition;
+    }
+
+    public void AutoResetCheck()
+    {
+        if (transform.position.y < -20)
+        {
+            ResetBall();
+        }
+    }
+
+    private void UpdatePlayerPosition()
+    {
+        playerData.playerPosition = transform.position; 
     }
 }

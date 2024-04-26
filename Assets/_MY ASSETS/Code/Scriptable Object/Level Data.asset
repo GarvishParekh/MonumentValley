@@ -12,36 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87d281ebbbd8f94b844886804ab6604, type: 3}
   m_Name: Level Data
   m_EditorClassIdentifier: 
-  currentLevel: 5
+  cameraAnimation: 1
+  currentLevel: 6
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
     startingZoomLevel: 3.5
     levelCenterPoint: {x: 0, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
-  - LevelName: Right
+  - LevelName: Pi /2
     startingZoomLevel: 4
     levelCenterPoint: {x: -1.5, y: 0, z: -3.75}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
-  - LevelName: Turn
+  - LevelName: Make a turn
     startingZoomLevel: 5
     levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
-  - LevelName: Cross
+  - LevelName: Near to Infinity
     startingZoomLevel: 5
     levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
-  - LevelName: Kris-Cross
+  - LevelName: Infinity
     startingZoomLevel: 5
     levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
-    ballSartingposition: {x: 2, y: 0.8, z: -2}
-  - LevelName: Up
-    startingZoomLevel: 5
+    ballSartingposition: {x: 4, y: 0.8, z: 2}
+  - LevelName: Parabola
+    startingZoomLevel: 3.5
     levelCenterPoint: {x: 0, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
-  - LevelName: Its's the right way
-    startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+  - LevelName: Its's the pi way
+    startingZoomLevel: 4
+    levelCenterPoint: {x: -1.75, y: 0, z: -4.25}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Back To Back
     startingZoomLevel: 5

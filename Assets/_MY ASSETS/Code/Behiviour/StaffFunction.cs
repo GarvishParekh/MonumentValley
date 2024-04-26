@@ -2,17 +2,57 @@ using UnityEngine;
 
 public class StaffFunction : MonoBehaviour, IOneClickAnimation
 {
-    public enum AnimationType
-    {
-        POOL_STICK,
-        SPRING
-    }
+    SFXManager sfxManager;
 
     [SerializeField] private AnimationType animationType;   
+    [SerializeField] private DistanceType distanceType;
+
+    [Header ("<size=15>[SCRIPTABLE OBJECT]")]
+    [SerializeField] private StaffData staffData;
+    [SerializeField] private PlayerData playerData;
+
+    [Header("<size=15>[SCRIPT]")]
     [SerializeField] private MainClick mainClick;
     [SerializeField] private LevelData levelData;
+
+    [Header ("<size=15>[COMPONENTS]")]
     [SerializeField] private Transform jumpEndPoint;
-    
+
+    Transform parentObject;
+    float distance;
+
+    private void Awake()
+    {
+        parentObject = transform.parent;
+
+        switch (animationType)
+        {
+            case AnimationType.POOL_STICK:
+                parentObject.transform.localScale = Vector3.zero;
+                break;
+        }
+    }
+
+    private void Start()
+    {
+        sfxManager = SFXManager.instance;
+    }
+
+    private void Update()
+    {
+        switch (animationType)
+        {
+            case AnimationType.POOL_STICK:
+                switch (levelData.cameraAnimation)
+                {
+                    case CameraAnimation.COMPLETED: 
+                        CheckPlayerPosition();
+                        break;
+                }
+                break;
+        }
+    }
+
     public void Animate()
     {
         switch(animationType)
@@ -34,5 +74,31 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
     public Vector3 GetEndPosition()
     {
         return jumpEndPoint.position;
+    }
+
+    public void CheckPlayerPosition()
+    {
+        distance = Vector3.Distance(transform.position, playerData.playerPosition);
+        if (distance < staffData.distanceThreshold)
+        {
+            switch (distanceType)
+            {
+                case DistanceType.FAR:
+                    LeanTween.scale(parentObject.gameObject, Vector3.one, staffData.startAnimationSpeed).setEaseInOutSine();
+                    sfxManager.PlayStaffGrowSound();
+                    break;
+            }
+            distanceType = DistanceType.CLOSE;
+        }
+        else
+        {
+            switch (distanceType)
+            {
+                case DistanceType.CLOSE:
+                    LeanTween.scale(parentObject.gameObject, Vector3.zero, staffData.endAnimationSpeed).setEaseInOutSine();
+                    break;
+            }
+            distanceType = DistanceType.FAR;
+        }
     }
 }

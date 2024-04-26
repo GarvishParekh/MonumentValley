@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
+
+
 public class LevelManager : MonoBehaviour
 {
     UIManager uiManager;
@@ -91,9 +93,11 @@ public class LevelManager : MonoBehaviour
 
     private void CameraOpeningAnimation()
     {
+        levelData.cameraAnimation = CameraAnimation.ON_GOING;
         mainCamera.transform.position = new Vector3(0, cameraData.cameraStartingpoint, 0);
         LeanTween.moveY(mainCamera, cameraData.cameraGameplayPoint, cameraData.animationSpeed).setEaseInOutSine().setOnComplete(() =>
         {
+            levelData.cameraAnimation = CameraAnimation.COMPLETED;
             if (currentLevelInfo != null)
             {
                 cameraSettings.SetLevelCenterPoint(currentLevelInfo.levelCenterPoint);

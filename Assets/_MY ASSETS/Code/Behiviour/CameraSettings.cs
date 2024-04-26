@@ -30,7 +30,7 @@ public class CameraSettings : MonoBehaviour
         orthographicValue = Mathf.Clamp(orthographicValue, minZoomValue, maxZoomValue);
         lerpedOrthographicValue = Mathf.MoveTowards(lerpedOrthographicValue, orthographicValue, Time.deltaTime * OrthographicSmoothness);
         mainCamera.orthographicSize = lerpedOrthographicValue;
-    }
+    }   
 
     public void ChangeZoomLevel(float desireZoomLevel)
     {

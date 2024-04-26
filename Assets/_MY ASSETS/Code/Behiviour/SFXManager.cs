@@ -4,7 +4,8 @@ public class SFXManager : MonoBehaviour
 {
     public static SFXManager instance;
     [SerializeField] private SoundData soundData;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSourceMid;
+    [SerializeField] private AudioSource audioSourceLow;
 
     private void Awake()
     {
@@ -13,16 +14,21 @@ public class SFXManager : MonoBehaviour
 
     public void PlayHitSound()
     {
-        audioSource.PlayOneShot(soundData.hitSound);
+        audioSourceMid.PlayOneShot(soundData.hitSound);
     }
 
     public void PlayLevelCompleteSound()
     {
-        audioSource.PlayOneShot(soundData.levelCompleteSound);
+        audioSourceMid.PlayOneShot(soundData.levelCompleteSound);
     }
 
     public void PlayJumpSound()
     {
-        audioSource.PlayOneShot(soundData.jumpSound);
+        audioSourceMid.PlayOneShot(soundData.jumpSound);
+    }
+
+    public void PlayStaffGrowSound()
+    {
+        audioSourceLow.PlayOneShot(soundData.staffGrowSound);
     }
 }
