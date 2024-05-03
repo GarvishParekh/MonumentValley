@@ -8,6 +8,7 @@ TagManager:
   - CameraHolder
   - Complete
   - Spring
+  - Fall
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,8 @@ public enum DistanceType
 public enum AnimationType
 {
     POOL_STICK,
-    SPRING
+    SPRING,
+    FALL
 }
 
 [CreateAssetMenu (fileName = "Staff Data", menuName = "Staff Data")]

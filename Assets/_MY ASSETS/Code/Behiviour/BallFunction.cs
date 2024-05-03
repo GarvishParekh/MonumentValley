@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class BallFunction : MonoBehaviour
 {
@@ -9,10 +8,11 @@ public class BallFunction : MonoBehaviour
     SFXManager sfxManager;
     UIManager uiManager;
 
+    [Header ("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private LevelData levelData;
+    [SerializeField] private PlayerData playerData;
 
     [SerializeField] private SphereCollider myCollider;
-    [SerializeField] private PlayerData playerData;
     [SerializeField] private Transform ballModel;
     [SerializeField] private Transform shadowModel;
     [SerializeField] private GameObject dropShadow;
@@ -74,7 +74,7 @@ public class BallFunction : MonoBehaviour
                     playerData.grounCheck = GrounCheck.STOP;
 
                     // jump animation
-                    LeanTween.move(gameObject.gameObject, getEndPoint, 0.4f).setEaseOutSine();
+                    LeanTween.move(gameObject, getEndPoint, 0.4f).setEaseOutSine();
                     LeanTween.moveY(ballModel.gameObject, 2f, 0.2f).setEaseOutSine().setLoopPingPong(1).setOnComplete(()=>
                     {
                         // restore velocity
@@ -85,6 +85,33 @@ public class BallFunction : MonoBehaviour
 
                     // play sound
                     sfxManager.PlayJumpSound();
+                    StartCoroutine(nameof(CoolingDown));
+                }
+                else if (other.CompareTag(playerData.fallTag))
+                {
+                    StaffFunction staffFunction = other.GetComponent<StaffFunction>();  
+                    // manager velocity
+                    Vector3 lastVelocity = playerRB.velocity;
+                    playerRB.velocity = Vector3.zero;
+
+                    // get jump end point
+                    Vector3 getEndPoint = other.GetComponent<StaffFunction>().GetEndPosition();
+                    playerData.grounCheck = GrounCheck.STOP;
+
+                    // jump animation
+                    LeanTween.moveX(gameObject, getEndPoint.x, staffFunction.GetDropSpeed());
+                    LeanTween.moveZ(gameObject, getEndPoint.z, staffFunction.GetDropSpeed());
+                    LeanTween.moveY(gameObject, getEndPoint.y, staffFunction.GetDropSpeed()).setEaseInSine().setOnComplete(() =>
+                    { 
+                        // restore velocity
+                        playerRB.velocity = lastVelocity;
+                        playerData.grounCheck = GrounCheck.ONGOING;
+                    });
+                    playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
+
+                    // play sound
+                    // play fall sound
+
                     StartCoroutine(nameof(CoolingDown));
                 }
                 break;

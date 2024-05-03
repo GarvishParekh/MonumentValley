@@ -29,5 +29,6 @@ public class PlayerData : ScriptableObject
     public LayerMask groundLayer;
     public string staffTag;
     public string springTag;
+    public string fallTag;
     public string completeTag;
 }

@@ -1,8 +1,11 @@
+using System.Net.Sockets;
 using UnityEngine;
 
 public class StaffFunction : MonoBehaviour, IOneClickAnimation
 {
     SFXManager sfxManager;
+
+    Collider mycollider;
 
     [SerializeField] private AnimationType animationType;   
     [SerializeField] private DistanceType distanceType;
@@ -18,6 +21,9 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
     [Header ("<size=15>[COMPONENTS]")]
     [SerializeField] private Transform jumpEndPoint;
 
+    [Header("<size=15>[VALUES]")]
+    [SerializeField] private float dropSpeed = 0.4f;
+
     Transform parentObject;
     float distance;
 
@@ -25,10 +31,15 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
     {
         parentObject = transform.parent;
 
+        mycollider = GetComponent<Collider>();  
         switch (animationType)
         {
             case AnimationType.POOL_STICK:
                 parentObject.transform.localScale = Vector3.zero;
+                if (mycollider != null )
+                { 
+                    mycollider.enabled = false; 
+                }
                 break;
         }
     }
@@ -58,7 +69,18 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
         switch(animationType)
         {
             case AnimationType.POOL_STICK:
-                LeanTween.moveLocalZ(gameObject, 1.2f, levelData.animationSpeed).setEaseInSine().setLoopPingPong(1);
+                if (mycollider != null)
+                {
+                    mycollider.enabled = true;
+                }
+
+                LeanTween.moveLocalZ(gameObject, 1.2f, levelData.animationSpeed).setEaseInSine().setLoopPingPong(1).setOnComplete(()=> 
+                {
+                    if (mycollider != null)
+                    {
+                        mycollider.enabled = false;
+                    }
+                });
                 return;
             case AnimationType.SPRING:
                 LeanTween.moveLocalY(gameObject, 0.22f, levelData.animationSpeed).setEaseInSine().setLoopPingPong(1);
@@ -100,5 +122,10 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
             }
             distanceType = DistanceType.FAR;
         }
+    }
+
+    public float GetDropSpeed()
+    {
+        return dropSpeed;   
     }
 }
