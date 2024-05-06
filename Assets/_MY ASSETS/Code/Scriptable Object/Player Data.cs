@@ -31,4 +31,5 @@ public class PlayerData : ScriptableObject
     public string springTag;
     public string fallTag;
     public string completeTag;
+    public string trapTag;
 }

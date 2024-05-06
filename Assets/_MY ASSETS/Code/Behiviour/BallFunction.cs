@@ -114,6 +114,11 @@ public class BallFunction : MonoBehaviour
 
                     StartCoroutine(nameof(CoolingDown));
                 }
+                else if (other.CompareTag(playerData.trapTag))
+                {
+                    Debug.Log("Trap");
+                    playerRB.velocity = Vector3.zero;
+                }
                 break;
         }
 
@@ -122,6 +127,7 @@ public class BallFunction : MonoBehaviour
             other.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
             LevelComplete(other.transform.GetChild(0).position);
         }
+        
     }
 
     private IEnumerator CoolingDown()

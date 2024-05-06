@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level Data
   m_EditorClassIdentifier: 
   cameraAnimation: 1
-  currentLevel: 0
+  currentLevel: 5
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -36,6 +36,30 @@ MonoBehaviour:
     startingZoomLevel: 5
     levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
     ballSartingposition: {x: 4, y: 0.8, z: 2}
+  - LevelName: Perpendicular
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -3, y: 0.85, z: -6}
+  - LevelName: Four
+    startingZoomLevel: 8
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -4, y: 0.85, z: -4}
+  - LevelName: Zic Zac
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -4, y: 0.85, z: 3}
+  - LevelName: Alphabet
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -3, y: 0.85, z: 0}
+  - LevelName: Six
+    startingZoomLevel: 8
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: 1, y: 0.85, z: 0}
+  - LevelName: Round and Round
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -4.5, y: 1.35, z: 0}
   - LevelName: Parabola
     startingZoomLevel: 3.5
     levelCenterPoint: {x: 0, y: 0, z: -3}
@@ -64,7 +88,15 @@ MonoBehaviour:
     startingZoomLevel: 6
     levelCenterPoint: {x: 0, y: 0, z: -3}
     ballSartingposition: {x: -5.25, y: 2.855, z: 0}
-  - LevelName: Round and Round
+  - LevelName: Focus
     startingZoomLevel: 6
     levelCenterPoint: {x: 0, y: 0, z: -3}
-    ballSartingposition: {x: -3.5, y: 1, z: 0}
+    ballSartingposition: {x: -4.5, y: 1.35, z: 0}
+  - LevelName: Square Brackets
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -3.5, y: 0.85, z: 0}
+  - LevelName: Good Luck
+    startingZoomLevel: 8
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -7.5, y: 0.85, z: 2.5}
