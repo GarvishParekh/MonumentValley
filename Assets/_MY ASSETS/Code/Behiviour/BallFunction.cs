@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
 public class BallFunction : MonoBehaviour
 {
+    public static Action TrapActivate;
+
     Rigidbody playerRB;
     WaitForSeconds cooldownTime = new WaitForSeconds(0.2f);
     SFXManager sfxManager;
@@ -117,6 +120,7 @@ public class BallFunction : MonoBehaviour
                 else if (other.CompareTag(playerData.trapTag))
                 {
                     Debug.Log("Trap");
+                    TrapActivate?.Invoke();
                     playerRB.velocity = Vector3.zero;
                 }
                 break;

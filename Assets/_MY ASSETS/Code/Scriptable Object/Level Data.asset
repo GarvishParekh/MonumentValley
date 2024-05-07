@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Level Data
   m_EditorClassIdentifier: 
   cameraAnimation: 1
-  currentLevel: 5
+  groundAnimation: 0
+  currentLevel: 20
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -100,3 +101,11 @@ MonoBehaviour:
     startingZoomLevel: 8
     levelCenterPoint: {x: 0, y: 0, z: -3}
     ballSartingposition: {x: -7.5, y: 0.85, z: 2.5}
+  - LevelName: Octagon
+    startingZoomLevel: 8
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -3, y: 0.85, z: 3}
+  - LevelName: Portal
+    startingZoomLevel: 8
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -5, y: 0.85, z: 0}

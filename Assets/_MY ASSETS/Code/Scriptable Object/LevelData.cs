@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum GroundAnimation
+{
+    Default,
+    Fall_Trap
+}
+
 public enum CameraAnimation
 {
     ON_GOING,
@@ -10,6 +16,7 @@ public enum CameraAnimation
 public class LevelData : ScriptableObject
 {
     public CameraAnimation cameraAnimation;
+    public GroundAnimation groundAnimation;
 
     [Space]
     public int currentLevel = 0;
