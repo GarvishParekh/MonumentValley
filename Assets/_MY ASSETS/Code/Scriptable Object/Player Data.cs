@@ -32,4 +32,6 @@ public class PlayerData : ScriptableObject
     public string fallTag;
     public string completeTag;
     public string trapTag;
+    public string portalTag;
+    public string shaderTriggerTag;
 }

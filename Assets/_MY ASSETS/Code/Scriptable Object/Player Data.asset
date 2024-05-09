@@ -15,7 +15,7 @@ MonoBehaviour:
   cooldownStatus: 0
   grounCheck: 0
   playerSpeed: 5
-  playerPosition: {x: 0, y: 0, z: 0}
+  playerPosition: {x: -5, y: 0.85, z: 0}
   rayCastLenght: 1.1
   groundLayer:
     serializedVersion: 2
@@ -25,3 +25,5 @@ MonoBehaviour:
   fallTag: Fall
   completeTag: Complete
   trapTag: Trap
+  portalTag: Portal
+  shaderTriggerTag: ShaderTrigger

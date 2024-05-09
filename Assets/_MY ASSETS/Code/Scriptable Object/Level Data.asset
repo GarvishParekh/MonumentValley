@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 20
+  currentLevel: 22
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -107,5 +107,5 @@ MonoBehaviour:
     ballSartingposition: {x: -3, y: 0.85, z: 3}
   - LevelName: Portal
     startingZoomLevel: 8
-    levelCenterPoint: {x: 0, y: 0, z: -3}
-    ballSartingposition: {x: -5, y: 0.85, z: 0}
+    levelCenterPoint: {x: 3, y: 0, z: 0}
+    ballSartingposition: {x: -4, y: -1.15, z: 0}

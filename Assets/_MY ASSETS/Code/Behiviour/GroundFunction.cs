@@ -8,7 +8,6 @@ public class GroundFunction : MonoBehaviour
     [SerializeField] private float distanceFromPlayer;
 
     private Vector3 playerPosition;
-    private Vector3 myStartPosition;
 
     private void OnEnable()
     {
@@ -18,11 +17,6 @@ public class GroundFunction : MonoBehaviour
     private void OnDisable()
     {
         BallFunction.TrapActivate -= GroundAnimation;
-    }
-
-    private void Start()
-    {
-        myStartPosition = transform.position * 2;
     }
 
     private void Update()

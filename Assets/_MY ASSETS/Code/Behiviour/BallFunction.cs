@@ -1,37 +1,32 @@
 using System;
 using UnityEngine;
-using System.Collections;
 
 public class BallFunction : MonoBehaviour
 {
     public static Action TrapActivate;
 
     Rigidbody playerRB;
-    WaitForSeconds cooldownTime = new WaitForSeconds(0.2f);
+    
     SFXManager sfxManager;
     UIManager uiManager;
 
-    [Header ("<size=15>[SCRIPTABLE OBJECT]")]
+    [Header("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private LevelData levelData;
     [SerializeField] private PlayerData playerData;
 
+    [Header("<size=15>[COMPONENTS]")]
     [SerializeField] private SphereCollider myCollider;
     [SerializeField] private Transform ballModel;
     [SerializeField] private Transform shadowModel;
     [SerializeField] private GameObject dropShadow;
-    [SerializeField] private GameObject nextLevelButton;
-
-    [SerializeField] private Vector3 startingPositon;
 
     LevelInformation currentLevelInfo;
-
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
         playerData.grounCheck = GrounCheck.ONGOING;
         playerData.cooldownStatus = CooldownStatus.READY;
-
     }
 
     private void Start()
@@ -52,93 +47,6 @@ public class BallFunction : MonoBehaviour
         UpdatePlayerPosition();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        switch (playerData.cooldownStatus)
-        {
-            case CooldownStatus.READY:
-                if (other.CompareTag(playerData.staffTag))
-                {
-                    playerRB.velocity = -other.transform.forward * playerData.playerSpeed;
-                    playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
-
-                    sfxManager.PlayHitSound();
-
-                    StartCoroutine(nameof(CoolingDown));
-                }
-                else if (other.CompareTag(playerData.springTag))
-                {
-                    // manager velocity
-                    Vector3 lastVelocity = playerRB.velocity;
-                    playerRB.velocity = Vector3.zero;
-
-                    // get jump end point
-                    Vector3 getEndPoint = other.GetComponent<StaffFunction>().GetEndPosition();
-                    playerData.grounCheck = GrounCheck.STOP;
-
-                    // jump animation
-                    LeanTween.move(gameObject, getEndPoint, 0.4f).setEaseOutSine();
-                    LeanTween.moveY(ballModel.gameObject, 2f, 0.2f).setEaseOutSine().setLoopPingPong(1).setOnComplete(()=>
-                    {
-                        // restore velocity
-                        playerRB.velocity = lastVelocity;
-                        playerData.grounCheck = GrounCheck.ONGOING;
-                    });
-                    playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
-
-                    // play sound
-                    sfxManager.PlayJumpSound();
-                    StartCoroutine(nameof(CoolingDown));
-                }
-                else if (other.CompareTag(playerData.fallTag))
-                {
-                    StaffFunction staffFunction = other.GetComponent<StaffFunction>();  
-                    // manager velocity
-                    Vector3 lastVelocity = playerRB.velocity;
-                    playerRB.velocity = Vector3.zero;
-
-                    // get jump end point
-                    Vector3 getEndPoint = other.GetComponent<StaffFunction>().GetEndPosition();
-                    playerData.grounCheck = GrounCheck.STOP;
-
-                    // jump animation
-                    LeanTween.moveX(gameObject, getEndPoint.x, staffFunction.GetDropSpeed());
-                    LeanTween.moveZ(gameObject, getEndPoint.z, staffFunction.GetDropSpeed());
-                    LeanTween.moveY(gameObject, getEndPoint.y, staffFunction.GetDropSpeed()).setEaseInSine().setOnComplete(() =>
-                    { 
-                        // restore velocity
-                        playerRB.velocity = lastVelocity;
-                        playerData.grounCheck = GrounCheck.ONGOING;
-                    });
-                    playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
-
-                    // play sound
-                    // play fall sound
-
-                    StartCoroutine(nameof(CoolingDown));
-                }
-                else if (other.CompareTag(playerData.trapTag))
-                {
-                    Debug.Log("Trap");
-                    TrapActivate?.Invoke();
-                    playerRB.velocity = Vector3.zero;
-                }
-                break;
-        }
-
-        if (other.CompareTag(playerData.completeTag))
-        {
-            other.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
-            LevelComplete(other.transform.GetChild(0).position);
-        }
-        
-    }
-
-    private IEnumerator CoolingDown()
-    {
-        yield return cooldownTime;
-        playerData.cooldownStatus = CooldownStatus.READY;
-    }
 
     private void GroundCheck()
     {
@@ -152,7 +60,7 @@ public class BallFunction : MonoBehaviour
                     playerRB.useGravity = true;
                     dropShadow.SetActive(false);
                 }
-                break;
+            break;
         }
     }
 
@@ -213,6 +121,7 @@ public class BallFunction : MonoBehaviour
 
     private void UpdatePlayerPosition()
     {
-        playerData.playerPosition = transform.position; 
+        playerData.playerPosition = transform.position;
     }
 }
+
