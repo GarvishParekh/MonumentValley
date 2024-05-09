@@ -9,6 +9,7 @@ public class MechanismTrigger : MonoBehaviour
 
     [Header ("<size=15>[SCRIPT]")]
     SFXManager sfxManager;
+    PortalFunction portalFunction;
 
     [Header ("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private PlayerData playerData;
@@ -131,6 +132,10 @@ public class MechanismTrigger : MonoBehaviour
 
     private IEnumerator ProtalEffect(Collider other)
     {
+        portalFunction = other.GetComponent<PortalFunction>();
+
+        ballModel.rotation = Quaternion.Euler(portalFunction.GetStartPortalTransform().rotation.eulerAngles);
+
         playerData.grounCheck = GrounCheck.STOP;
         while (dissolveValue != shaderHidevalue)
         {
@@ -156,8 +161,6 @@ public class MechanismTrigger : MonoBehaviour
     {
         //playerRB.velocity = Vector3.zero;
 
-        PortalFunction portalFunction = other.GetComponent<PortalFunction>();
-        
         Transform endPoint = portalFunction?.portalEndPoint;
 
         transform.position = endPoint.position;
