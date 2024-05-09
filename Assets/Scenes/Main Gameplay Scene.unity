@@ -4781,6 +4781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 23 (Portal)
       objectReference: {fileID: 0}
+    - target: {fileID: 3183238427929292767, guid: f24c8c0b8d5038b43bacde2b209abaf2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7923014843468063906, guid: f24c8c0b8d5038b43bacde2b209abaf2,
         type: 3}
       propertyPath: m_LocalPosition.x
