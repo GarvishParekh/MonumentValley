@@ -12,6 +12,7 @@ TagManager:
   - Trap
   - Portal
   - ShaderTrigger
+  - Star
   layers:
   - Default
   - TransparentFX

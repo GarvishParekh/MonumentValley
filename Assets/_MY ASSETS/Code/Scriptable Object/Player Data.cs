@@ -12,12 +12,19 @@ public enum GrounCheck
     STOP
 }
 
+public enum PlayerTrap
+{
+    TRAPPED,
+    FREE
+}
+
 
 [CreateAssetMenu(fileName = "Player Data", menuName = "Player Data")]
 public class PlayerData : ScriptableObject
 {
     public CooldownStatus cooldownStatus;
     public GrounCheck grounCheck;
+    public PlayerTrap playerTrap;
     public float playerSpeed;
 
     public Vector3 playerPosition;
@@ -34,4 +41,5 @@ public class PlayerData : ScriptableObject
     public string trapTag;
     public string portalTag;
     public string shaderTriggerTag;
+    public string starTag;
 }

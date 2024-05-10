@@ -14,6 +14,10 @@ public class BallFunction : MonoBehaviour
     [SerializeField] private LevelData levelData;
     [SerializeField] private PlayerData playerData;
 
+    [Header("<size=15>[SCRIPT]")]
+    [SerializeField] private LevelManager levelManager;
+
+
     [Header("<size=15>[COMPONENTS]")]
     [SerializeField] private SphereCollider myCollider;
     [SerializeField] private Transform ballModel;
@@ -68,6 +72,7 @@ public class BallFunction : MonoBehaviour
     {
         ResetAnimation();
         StopPlayerMotion();
+
         playerData.grounCheck = GrounCheck.ONGOING;
         if (currentLevelInfo != null)
         {
@@ -77,6 +82,8 @@ public class BallFunction : MonoBehaviour
         myCollider.isTrigger = true;
         playerRB.isKinematic = true;
         playerRB.isKinematic = false;
+
+        playerData.playerTrap = PlayerTrap.FREE;
     }
 
     private void ResetAnimation()

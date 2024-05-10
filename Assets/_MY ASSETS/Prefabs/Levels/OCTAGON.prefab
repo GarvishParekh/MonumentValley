@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1602687836188110635}
   m_Layer: 0
-  m_Name: Level 22 (Octagon)
+  m_Name: OCTAGON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

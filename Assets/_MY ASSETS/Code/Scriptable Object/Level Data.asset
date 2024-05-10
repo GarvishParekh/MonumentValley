@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 23
+  currentLevel: 20
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -100,11 +100,7 @@ MonoBehaviour:
   - LevelName: Good Luck
     startingZoomLevel: 8
     levelCenterPoint: {x: 0, y: 0, z: -3}
-    ballSartingposition: {x: -7.5, y: 0.85, z: 2.5}
-  - LevelName: Octagon
-    startingZoomLevel: 8
-    levelCenterPoint: {x: 0, y: 0, z: -3}
-    ballSartingposition: {x: -3, y: 0.85, z: 3}
+    ballSartingposition: {x: -7.5, y: 0.856, z: 2.5}
   - LevelName: Portal
     startingZoomLevel: 8
     levelCenterPoint: {x: 3, y: 0, z: 0}
