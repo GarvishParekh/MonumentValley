@@ -12,6 +12,12 @@ public enum CameraAnimation
     COMPLETED
 }
 
+public enum StarStatus
+{
+    Default,
+    Collected
+}
+
 [CreateAssetMenu(fileName = "Level Data", menuName = "Level Data")]
 public class LevelData : ScriptableObject
 {
@@ -27,7 +33,10 @@ public class LevelData : ScriptableObject
 [System.Serializable]
 public class LevelInformation
 {
+    [Header ("[ Name ]")]
     public string LevelName;
+
+    [Header ("[ Set Up Values ]")]
     public float startingZoomLevel = 5;
     public Vector3 levelCenterPoint = Vector3.zero;
     public Vector3 ballSartingposition = Vector3.zero;

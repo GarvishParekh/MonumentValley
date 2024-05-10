@@ -107,17 +107,34 @@ public class MechanismTrigger : MonoBehaviour
 
                     StartCoroutine(nameof(CoolingDown));
                 }
+
+                //Trap Fall Animation
                 else if (other.CompareTag(playerData.trapTag))
                 {
-                    Debug.Log("Trap");
-                    BallFunction.TrapActivate?.Invoke();
-                    playerRB.velocity = Vector3.zero;
+                    switch (playerData.playerTrap)
+                    {
+                        case PlayerTrap.FREE:
+                            Debug.Log("Trap");
+                    
+                            BallFunction.TrapActivate?.Invoke();
+                            playerRB.velocity = Vector3.zero;
+
+                            playerData.playerTrap = PlayerTrap.TRAPPED;
+                        break;
+                    }
                 }
 
                 // PORTAL EFFECT
                 else if (other.CompareTag(playerData.portalTag))
                 {
                     StartCoroutine(nameof(ProtalEffect), other);
+                }
+
+                //Star Collect...
+                else if (other.CompareTag(playerData.starTag))
+                {
+                    StarIdentity starIdentity = other.GetComponentInParent<StarIdentity>();
+                    starIdentity.starStatus = StarStatus.Collected;
                 }
                 break;
         }
