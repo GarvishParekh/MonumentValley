@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 24
+  currentLevel: 26
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -117,3 +117,11 @@ MonoBehaviour:
     startingZoomLevel: 10
     levelCenterPoint: {x: 2, y: 0, z: -2}
     ballSartingposition: {x: 2, y: 3.849, z: -4}
+  - LevelName: Ground Rotation
+    startingZoomLevel: 8
+    levelCenterPoint: {x: 2, y: 0, z: -2}
+    ballSartingposition: {x: -8, y: 0.856, z: 1}
+  - LevelName: Ground Rotate
+    startingZoomLevel: 8
+    levelCenterPoint: {x: 2, y: 0, z: -2}
+    ballSartingposition: {x: -3, y: 0.856, z: 2}

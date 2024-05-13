@@ -4,6 +4,7 @@ public class GroundFunction : MonoBehaviour
 {
     [Header("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private GameObject rotationHolder;
 
     private float groundStartPosition;
     

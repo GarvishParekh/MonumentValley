@@ -83,12 +83,13 @@ public class MechanismTrigger : MonoBehaviour
                 else if (other.CompareTag(playerData.fallTag))
                 {
                     StaffFunction staffFunction = other.GetComponent<StaffFunction>();
+                    
                     // manager velocity
                     Vector3 lastVelocity = playerRB.velocity;
                     playerRB.velocity = Vector3.zero;
 
                     // get jump end point
-                    Vector3 getEndPoint = other.GetComponent<StaffFunction>().GetEndPosition();
+                    Vector3 getEndPoint = staffFunction.GetEndPosition();
                     playerData.grounCheck = GrounCheck.STOP;
 
                     // jump animation
@@ -135,6 +136,13 @@ public class MechanismTrigger : MonoBehaviour
                 {
                     StarIdentity starIdentity = other.GetComponentInParent<StarIdentity>();
                     starIdentity.starStatus = StarStatus.Collected;
+                }
+
+                //Ground Rotate Effect
+                else if(other.CompareTag(playerData.stayTag))
+                {
+                    playerRB.velocity = Vector3.zero;
+                    BallFunction.RotateGround?.Invoke(0);
                 }
                 break;
         }

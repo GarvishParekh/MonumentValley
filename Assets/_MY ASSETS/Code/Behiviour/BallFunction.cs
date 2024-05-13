@@ -4,6 +4,7 @@ using UnityEngine;
 public class BallFunction : MonoBehaviour
 {
     public static Action TrapActivate;
+    public static Action<float> RotateGround;
 
     Rigidbody playerRB;
     
@@ -72,6 +73,7 @@ public class BallFunction : MonoBehaviour
     {
         ResetAnimation();
         StopPlayerMotion();
+        RotateGround?.Invoke(90);
 
         playerData.grounCheck = GrounCheck.ONGOING;
         if (currentLevelInfo != null)

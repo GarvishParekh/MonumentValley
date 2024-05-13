@@ -42,4 +42,5 @@ public class PlayerData : ScriptableObject
     public string portalTag;
     public string shaderTriggerTag;
     public string starTag;
+    public string stayTag;
 }

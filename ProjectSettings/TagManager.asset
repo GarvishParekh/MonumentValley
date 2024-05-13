@@ -13,6 +13,7 @@ TagManager:
   - Portal
   - ShaderTrigger
   - Star
+  - Stay
   layers:
   - Default
   - TransparentFX

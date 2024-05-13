@@ -16,7 +16,7 @@ MonoBehaviour:
   grounCheck: 0
   playerTrap: 1
   playerSpeed: 5
-  playerPosition: {x: -7.5, y: 0.856, z: 2.5}
+  playerPosition: {x: -4, y: 0.856, z: 1}
   rayCastLenght: 1.1
   groundLayer:
     serializedVersion: 2
@@ -29,3 +29,4 @@ MonoBehaviour:
   portalTag: Portal
   shaderTriggerTag: ShaderTrigger
   starTag: Star
+  stayTag: Stay
