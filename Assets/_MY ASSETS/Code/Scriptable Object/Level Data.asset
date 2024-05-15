@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 26
+  currentLevel: 25
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -23,19 +23,19 @@ MonoBehaviour:
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Pi /2
     startingZoomLevel: 4
-    levelCenterPoint: {x: -1.5, y: 0, z: -3.75}
+    levelCenterPoint: {x: -2, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Make a turn
     startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    levelCenterPoint: {x: -1, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Near to Infinity
     startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    levelCenterPoint: {x: -1, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Infinity
     startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    levelCenterPoint: {x: 0, y: 0, z: -2}
     ballSartingposition: {x: 4, y: 0.8, z: 2}
   - LevelName: Perpendicular
     startingZoomLevel: 6
@@ -43,7 +43,7 @@ MonoBehaviour:
     ballSartingposition: {x: -3, y: 0.85, z: -6}
   - LevelName: Four
     startingZoomLevel: 8
-    levelCenterPoint: {x: 0, y: 0, z: -3}
+    levelCenterPoint: {x: -0.5, y: 0, z: -2}
     ballSartingposition: {x: -4, y: 0.85, z: -4}
   - LevelName: Zic Zac
     startingZoomLevel: 6
@@ -51,15 +51,15 @@ MonoBehaviour:
     ballSartingposition: {x: -4, y: 0.85, z: 3}
   - LevelName: Alphabet
     startingZoomLevel: 6
-    levelCenterPoint: {x: 0, y: 0, z: -3}
+    levelCenterPoint: {x: 1, y: 0, z: -2.5}
     ballSartingposition: {x: -3, y: 0.85, z: 0}
   - LevelName: Six
     startingZoomLevel: 8
-    levelCenterPoint: {x: 0, y: 0, z: -3}
+    levelCenterPoint: {x: -0.5, y: 0, z: -4}
     ballSartingposition: {x: 1, y: 0.85, z: 0}
   - LevelName: Round and Round
     startingZoomLevel: 6
-    levelCenterPoint: {x: 0, y: 0, z: -3}
+    levelCenterPoint: {x: -1.5, y: 0, z: -3.5}
     ballSartingposition: {x: -4.5, y: 1.35, z: 0}
   - LevelName: Parabola
     startingZoomLevel: 3.5
@@ -71,7 +71,7 @@ MonoBehaviour:
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Back To Back
     startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    levelCenterPoint: {x: -1.5, y: 0, z: -3.5}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Down
     startingZoomLevel: 5
@@ -87,41 +87,45 @@ MonoBehaviour:
     ballSartingposition: {x: 0, y: 1.88, z: 2}
   - LevelName: Don't give up
     startingZoomLevel: 6
-    levelCenterPoint: {x: 0, y: 0, z: -3}
+    levelCenterPoint: {x: -1, y: 0, z: -3.5}
     ballSartingposition: {x: -5.25, y: 2.855, z: 0}
   - LevelName: Focus
     startingZoomLevel: 6
-    levelCenterPoint: {x: 0, y: 0, z: -3}
+    levelCenterPoint: {x: -1.5, y: 0, z: -3.5}
     ballSartingposition: {x: -4.5, y: 1.35, z: 0}
   - LevelName: Square Brackets
     startingZoomLevel: 6
-    levelCenterPoint: {x: 0, y: 0, z: -3}
+    levelCenterPoint: {x: 0, y: 0, z: -3.5}
     ballSartingposition: {x: -3.5, y: 0.85, z: 0}
-  - LevelName: Good Luck
+  - LevelName: Trapped
     startingZoomLevel: 8
-    levelCenterPoint: {x: 0, y: 0, z: -3}
+    levelCenterPoint: {x: 0, y: 0, z: -3.5}
     ballSartingposition: {x: -7.5, y: 0.856, z: 2.5}
   - LevelName: Portal
     startingZoomLevel: 8
-    levelCenterPoint: {x: 3, y: 0, z: 0}
+    levelCenterPoint: {x: 1, y: 0, z: 2}
     ballSartingposition: {x: -4, y: -1.15, z: 0}
   - LevelName: Next Portal
     startingZoomLevel: 8
-    levelCenterPoint: {x: 3, y: 0, z: 0}
+    levelCenterPoint: {x: 2.5, y: 0, z: -1}
     ballSartingposition: {x: 0, y: 0.856, z: -4}
   - LevelName: Watch Carefully
     startingZoomLevel: 8
-    levelCenterPoint: {x: 3, y: 0, z: -3}
+    levelCenterPoint: {x: 2.5, y: 0, z: 1}
     ballSartingposition: {x: 0, y: 1.856, z: 4}
   - LevelName: Looping
     startingZoomLevel: 10
-    levelCenterPoint: {x: 2, y: 0, z: -2}
-    ballSartingposition: {x: 2, y: 3.849, z: -4}
+    levelCenterPoint: {x: -0.5, y: 0, z: -2}
+    ballSartingposition: {x: 2, y: 2.856, z: -4}
   - LevelName: Ground Rotation
     startingZoomLevel: 8
-    levelCenterPoint: {x: 2, y: 0, z: -2}
-    ballSartingposition: {x: -8, y: 0.856, z: 1}
-  - LevelName: Ground Rotate
-    startingZoomLevel: 8
-    levelCenterPoint: {x: 2, y: 0, z: -2}
+    levelCenterPoint: {x: 0.5, y: 0, z: -2.5}
+    ballSartingposition: {x: -6, y: 0.856, z: 0}
+  - LevelName: Level 27
+    startingZoomLevel: 6
+    levelCenterPoint: {x: -1, y: 0, z: -3}
     ballSartingposition: {x: -3, y: 0.856, z: 2}
+  - LevelName: Take a Turn
+    startingZoomLevel: 6
+    levelCenterPoint: {x: -1, y: 0, z: -2}
+    ballSartingposition: {x: -3, y: 0.856, z: -4}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Splines;
 
 [RequireComponent(typeof(BallFunction))]
 public class MechanismTrigger : MonoBehaviour
@@ -16,6 +17,7 @@ public class MechanismTrigger : MonoBehaviour
 
     [Header("<size=15>[COMPONENTS]")]
     [SerializeField] private Transform ballModel;
+    //[SerializeField] private SplineAnimate splineAnimate;
 
     [Header("<size=15>[SHADER VALUES]")]
     [SerializeField] private Material shaderMat;
@@ -142,7 +144,27 @@ public class MechanismTrigger : MonoBehaviour
                 else if(other.CompareTag(playerData.stayTag))
                 {
                     playerRB.velocity = Vector3.zero;
-                    BallFunction.RotateGround?.Invoke(0);
+                    BallFunction.RotateGround?.Invoke();
+                }
+
+                else if (other.CompareTag(playerData.turnStartTag))
+                {
+                    Debug.Log("Turn START");
+                    //BallFunction.TurnBall?.Invoke(playerRB.velocity);
+
+                    Bezier bezire = other.GetComponentInParent<Bezier>();
+                    SplineAnimate splineAnimate = bezire.GetSpline();
+
+                    splineAnimate.enabled = true;
+                    //sa.Play();
+                    playerRB.velocity = Vector3.zero;
+
+                    splineAnimate.Restart(true);
+                    transform.SetParent(bezire.GetParent());
+                    transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, 0.1f);
+
+                    endDirection = bezire.GetEndDirection();
+                    StartCoroutine(nameof(BezierAnimation), splineAnimate);        
                 }
                 break;
         }
@@ -153,6 +175,23 @@ public class MechanismTrigger : MonoBehaviour
             ballFunction.LevelComplete(other.transform.GetChild(0).position);
         }
 
+    }
+
+    Transform endDirection;
+    IEnumerator BezierAnimation(SplineAnimate sa)
+    {
+        bool isplaying = true;
+        while (isplaying != false)
+        {
+            Debug.Log($"Animation is playing");
+            Debug.Log(isplaying);
+
+            isplaying = sa.IsPlaying;
+            yield return null;
+        }
+        Debug.Log($"Animation completed");
+        transform.parent = null;
+        playerRB.velocity = endDirection.forward * playerData.playerSpeed;
     }
 
     private IEnumerator ProtalEffect(Collider other)

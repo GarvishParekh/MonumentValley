@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   cooldownStatus: 0
-  grounCheck: 0
+  grounCheck: 1
   playerTrap: 1
   playerSpeed: 5
-  playerPosition: {x: -4, y: 0.856, z: 1}
+  playerPosition: {x: -4, y: -1.929, z: -7}
   rayCastLenght: 1.1
   groundLayer:
     serializedVersion: 2
@@ -30,3 +30,5 @@ MonoBehaviour:
   shaderTriggerTag: ShaderTrigger
   starTag: Star
   stayTag: Stay
+  turnStartTag: TurnStart
+  turnEndTag: TurnEnd

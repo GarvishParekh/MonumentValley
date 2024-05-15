@@ -43,4 +43,6 @@ public class PlayerData : ScriptableObject
     public string shaderTriggerTag;
     public string starTag;
     public string stayTag;
+    public string turnStartTag;
+    public string turnEndTag;
 }
