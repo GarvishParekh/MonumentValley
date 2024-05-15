@@ -129,3 +129,11 @@ MonoBehaviour:
     startingZoomLevel: 6
     levelCenterPoint: {x: -1, y: 0, z: -2}
     ballSartingposition: {x: -3, y: 0.856, z: -4}
+  - LevelName: Jump Upwards
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: 0}
+    ballSartingposition: {x: -4, y: -1.15, z: 0}
+  - LevelName: Level 30
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 3, y: 0, z: 0}
+    ballSartingposition: {x: -1, y: 2.363, z: 3.5}

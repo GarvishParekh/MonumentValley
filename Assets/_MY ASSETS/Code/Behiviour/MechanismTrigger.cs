@@ -144,20 +144,22 @@ public class MechanismTrigger : MonoBehaviour
                 else if(other.CompareTag(playerData.stayTag))
                 {
                     playerRB.velocity = Vector3.zero;
-                    BallFunction.RotateGround?.Invoke();
+                    GroundRotation r = other.GetComponentInParent<GroundRotation>();
+                    r.RotateLevel();
                 }
 
-                else if (other.CompareTag(playerData.turnStartTag))
+                //Bezier Curve Effect
+                else if (other.CompareTag(playerData.bezierCurve))
                 {
                     Debug.Log("Turn START");
-                    //BallFunction.TurnBall?.Invoke(playerRB.velocity);
 
                     Bezier bezire = other.GetComponentInParent<Bezier>();
                     SplineAnimate splineAnimate = bezire.GetSpline();
 
                     splineAnimate.enabled = true;
-                    //sa.Play();
+
                     playerRB.velocity = Vector3.zero;
+                    playerData.grounCheck = GrounCheck.STOP;
 
                     splineAnimate.Restart(true);
                     transform.SetParent(bezire.GetParent());
@@ -190,6 +192,8 @@ public class MechanismTrigger : MonoBehaviour
             yield return null;
         }
         Debug.Log($"Animation completed");
+        playerData.grounCheck = GrounCheck.ONGOING;
+        
         transform.parent = null;
         playerRB.velocity = endDirection.forward * playerData.playerSpeed;
     }

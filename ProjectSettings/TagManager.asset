@@ -14,8 +14,7 @@ TagManager:
   - ShaderTrigger
   - Star
   - Stay
-  - TurnStart
-  - TurnEnd
+  - BezierCurve
   layers:
   - Default
   - TransparentFX

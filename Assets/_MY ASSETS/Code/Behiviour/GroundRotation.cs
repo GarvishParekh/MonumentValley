@@ -15,7 +15,9 @@ public class GroundRotation : MonoBehaviour
 
     [Header ("[ VALUES ]")]
     [SerializeField] private float defaultRotationValue;
-    [SerializeField] private float neededRotationValue;
+    [SerializeField] private float finalRotationValue;
+
+    Vector3 rotationToApply;
 
     private void OnEnable()
     {
@@ -26,27 +28,31 @@ public class GroundRotation : MonoBehaviour
     {
         BallFunction.RotateGround -= ManageGroundRotation;
     }
-
+    /// <summary>
+    /// Only when user hits restart or falls
+    /// </summary>
     private void ManageGroundRotation()
     {
-        switch (rotationStatus)
+        RotateGorund(GroundRotationStatus.Default);
+    }
+
+    public void RotateLevel()
+    {
+        RotateGorund(GroundRotationStatus.Rotated);
+    }
+
+    private void RotateGorund(GroundRotationStatus status)
+    {
+        switch (status)
         {
             case GroundRotationStatus.Default:
-                RotateGorund(neededRotationValue);
-                rotationStatus = GroundRotationStatus.Rotated;
+                rotationToApply.y = defaultRotationValue;
                 break;
 
             case GroundRotationStatus.Rotated:
-                RotateGorund(defaultRotationValue);
-                rotationStatus = GroundRotationStatus.Default;
+                rotationToApply.y = finalRotationValue;
                 break;
         }
+        LeanTween.rotate(groundRotationHolder, rotationToApply, 0.8f);
     }
-
-    private void RotateGorund(float _rotationValue)
-    {
-        Debug.Log(_rotationValue);
-        LeanTween.rotateY(groundRotationHolder, _rotationValue, 0.8f);
-    }
-
 }
