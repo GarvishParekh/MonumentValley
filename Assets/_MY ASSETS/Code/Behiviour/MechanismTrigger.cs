@@ -141,11 +141,16 @@ public class MechanismTrigger : MonoBehaviour
                 }
 
                 //Ground Rotate Effect
-                else if(other.CompareTag(playerData.stayTag))
+                else if(other.CompareTag(playerData.holdTag))
                 {
                     playerRB.velocity = Vector3.zero;
-                    GroundRotation r = other.GetComponentInParent<GroundRotation>();
-                    r.RotateLevel();
+
+                    HoldFunction holdFunction = other.GetComponentInParent<HoldFunction>();
+                   
+                    transform.SetParent(holdFunction.GetParent());
+                    transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 1);
+                    
+                    holdFunction.PlayAnimation();
                 }
 
                 //Bezier Curve Effect

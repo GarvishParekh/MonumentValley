@@ -13,8 +13,9 @@ TagManager:
   - Portal
   - ShaderTrigger
   - Star
-  - Stay
   - BezierCurve
+  - TurnStart
+  - Hold
   layers:
   - Default
   - TransparentFX

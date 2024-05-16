@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8345776911449753937}
   m_Layer: 6
   m_Name: Only Rotaion Ground Holder
-  m_TagString: Stay
+  m_TagString: Hold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,4 +291,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: b8f6066713c14e14e89f8c6f81e2f383, type: 2}
-  rotationHolder: {fileID: 0}

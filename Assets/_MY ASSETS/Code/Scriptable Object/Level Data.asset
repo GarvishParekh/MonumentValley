@@ -137,3 +137,7 @@ MonoBehaviour:
     startingZoomLevel: 6
     levelCenterPoint: {x: 3, y: 0, z: 0}
     ballSartingposition: {x: -1, y: 2.363, z: 3.5}
+  - LevelName: Lift
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 2, y: 0, z: 0}
+    ballSartingposition: {x: -2, y: -2.15, z: 0}
