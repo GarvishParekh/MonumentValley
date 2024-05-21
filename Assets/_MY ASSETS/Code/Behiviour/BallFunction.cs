@@ -16,6 +16,7 @@ public class BallFunction : MonoBehaviour
     [Header("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private LevelData levelData;
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private StaffData staffData;
 
     [Header("<size=15>[SCRIPT]")]
     [SerializeField] private LevelManager levelManager;
@@ -76,8 +77,14 @@ public class BallFunction : MonoBehaviour
         ResetAnimation();
         StopPlayerMotion();
 
+        if (transform.parent != null)
+        {
+            transform.parent = null;
+        }
+
         ResetGround?.Invoke();
         BallReset?.Invoke();
+
 
         playerData.grounCheck = GrounCheck.ONGOING;
         if (currentLevelInfo != null)

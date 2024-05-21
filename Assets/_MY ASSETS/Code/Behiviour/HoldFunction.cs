@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public enum GroundRotationStatus
 {
     Default,
@@ -18,9 +19,13 @@ public enum HoldAnimationType
     LiftGround
 }
 
+
 public class HoldFunction : MonoBehaviour
 {
     public HoldAnimationType animationType;
+
+    [Header("[ SCRIPTABLE OBJECT ")]
+    [SerializeField] private StaffData saffdata;
 
     [Header ("[ COMPONENTS ]")]
     [SerializeField] private Transform player;
@@ -86,7 +91,7 @@ public class HoldFunction : MonoBehaviour
         }
     }
 
-    //For Rotation
+    //For Rotation Animation
     private void RotateGround(GroundRotationStatus status)
     {
         switch (status)
@@ -99,13 +104,15 @@ public class HoldFunction : MonoBehaviour
                 rotationToApply.y = finalRotationValue;
                 break;
         }
+        saffdata.animationState = AnimationState.PAUSE;
         LeanTween.rotate(groundRotationHolder, rotationToApply, 0.8f).setOnComplete(() =>
         {
             player.parent = null;
-        }); ;
+            saffdata.animationState = AnimationState.PLAY;
+        });
     }
 
-    //For Lifting
+    //For Lift Animation
     private void LiftGround(GroundLiftStatus status)
     {
         switch (status)
@@ -118,10 +125,11 @@ public class HoldFunction : MonoBehaviour
                 positionToApply.y = finalLiftValue;
                 break;
         }
+        saffdata.animationState = AnimationState.PAUSE;
         LeanTween.moveLocalY(groundLiftHolder, positionToApply.y, 0.8f).setOnComplete(() =>
         {
             player.parent = null;
+            saffdata.animationState = AnimationState.PLAY;
         });
-        
     }
 }

@@ -12,10 +12,18 @@ public enum AnimationType
     FALL
 }
 
+public enum AnimationState
+{
+    PLAY,
+    PAUSE
+}
+
 [CreateAssetMenu (fileName = "Staff Data", menuName = "Staff Data")]
 public class StaffData : ScriptableObject
 {
+    public AnimationState animationState;
     public float distanceThreshold = 5f;
+
 
     [Space]
     public float startAnimationSpeed = 0.2f;

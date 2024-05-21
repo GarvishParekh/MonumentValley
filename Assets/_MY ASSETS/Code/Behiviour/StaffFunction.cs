@@ -1,4 +1,3 @@
-using System.Net.Sockets;
 using UnityEngine;
 
 public class StaffFunction : MonoBehaviour, IOneClickAnimation
@@ -66,6 +65,9 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
 
     public void Animate()
     {
+        if (staffData.animationState == AnimationState.PAUSE)
+            return;
+
         switch(animationType)
         {
             case AnimationType.POOL_STICK:

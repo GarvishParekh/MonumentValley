@@ -1283,7 +1283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staffAnimationState: 0
-  staffsCollection: []
 --- !u!1 &544122776
 GameObject:
   m_ObjectHideFlags: 8
@@ -5734,6 +5733,12 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1483052135}
+    - target: {fileID: 6211994500866339028, guid: 8d2642eeb675a864288424e475f40d62,
+        type: 3}
+      propertyPath: saffdata
+      value: 
+      objectReference: {fileID: 11400000, guid: dabe86753d8344341931f8f36a41df2d,
+        type: 2}
     - target: {fileID: 6688749040093075735, guid: 8d2642eeb675a864288424e475f40d62,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6425,6 +6430,22 @@ PrefabInstance:
       propertyPath: mainClick
       value: 
       objectReference: {fileID: 516679808}
+    - target: {fileID: 6804572973288927094, guid: 55a46e608ab272b409495d7e4ee9628a,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1483052135}
+    - target: {fileID: 6804572973288927094, guid: 55a46e608ab272b409495d7e4ee9628a,
+        type: 3}
+      propertyPath: saffdata
+      value: 
+      objectReference: {fileID: 11400000, guid: dabe86753d8344341931f8f36a41df2d,
+        type: 2}
+    - target: {fileID: 6804572973288927094, guid: 55a46e608ab272b409495d7e4ee9628a,
+        type: 3}
+      propertyPath: mainClick
+      value: 
+      objectReference: {fileID: 516679808}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6716,6 +6737,21 @@ PrefabInstance:
       propertyPath: mainClick
       value: 
       objectReference: {fileID: 516679808}
+    - target: {fileID: 6881765041805764756, guid: 9fd975f6c7ebaab4c8030322cba01108,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881765041805764756, guid: 9fd975f6c7ebaab4c8030322cba01108,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881765041805764756, guid: 9fd975f6c7ebaab4c8030322cba01108,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710576
+      objectReference: {fileID: 0}
     - target: {fileID: 6899333329457246402, guid: 9fd975f6c7ebaab4c8030322cba01108,
         type: 3}
       propertyPath: mainClick
@@ -6786,6 +6822,16 @@ PrefabInstance:
       propertyPath: mainClick
       value: 
       objectReference: {fileID: 516679808}
+    - target: {fileID: 7641725153068826945, guid: 9fd975f6c7ebaab4c8030322cba01108,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.8080003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641725153068826945, guid: 9fd975f6c7ebaab4c8030322cba01108,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000074133904
+      objectReference: {fileID: 0}
     - target: {fileID: 7810535248025532745, guid: 9fd975f6c7ebaab4c8030322cba01108,
         type: 3}
       propertyPath: mainClick
@@ -6899,6 +6945,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1483052135}
+    - target: {fileID: 8959683870822145691, guid: 2f33b2c6c80de4d4a85ab2790eb04e9b,
+        type: 3}
+      propertyPath: saffdata
+      value: 
+      objectReference: {fileID: 11400000, guid: dabe86753d8344341931f8f36a41df2d,
+        type: 2}
+    - target: {fileID: 8959683870822145691, guid: 2f33b2c6c80de4d4a85ab2790eb04e9b,
+        type: 3}
+      propertyPath: mainClick
+      value: 
+      objectReference: {fileID: 516679808}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
