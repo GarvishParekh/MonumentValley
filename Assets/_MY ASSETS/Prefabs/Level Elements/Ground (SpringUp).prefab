@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 6244124380243243085}
   - component: {fileID: 2221139294939712191}
   m_Layer: 0
-  m_Name: PlayerHolder (Spline Route)
+  m_Name: Player Center Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  playerHolder: {fileID: 6244124380243243085}
+  playerCenterPoint: {fileID: 6244124380243243085}
   endVelocity: {fileID: 4646507103956540980}
   splineAnimate: {fileID: 2221139294939712191}
 --- !u!1 &6301652918984052240

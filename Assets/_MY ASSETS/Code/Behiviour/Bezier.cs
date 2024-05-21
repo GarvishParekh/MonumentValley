@@ -6,7 +6,7 @@ public class Bezier : MonoBehaviour
 {
     [Header ("[ COMPONENTS ]")]
     [SerializeField] private Transform player;
-    [SerializeField] private Transform playerHolder;
+    [SerializeField] private Transform playerCenterPoint;
     [SerializeField] private Transform endVelocity;
 
     [Space]
@@ -16,7 +16,7 @@ public class Bezier : MonoBehaviour
 
     public Transform GetParent()
     {
-        return playerHolder;
+        return playerCenterPoint;
     }
 
     public Transform GetEndDirection()
