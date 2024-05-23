@@ -777,7 +777,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: b8f6066713c14e14e89f8c6f81e2f383, type: 2}
-  distanceFromPlayer: 0
 --- !u!4 &3271753461268929976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2725757197182382998, guid: 655a254111c41a4479ea595c08f0e4a5,
@@ -1893,7 +1892,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: b8f6066713c14e14e89f8c6f81e2f383, type: 2}
-  distanceFromPlayer: 0
 --- !u!1001 &2676717514770535940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5143,7 +5141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: b8f6066713c14e14e89f8c6f81e2f383, type: 2}
-  distanceFromPlayer: 0
 --- !u!4 &4907605000642327415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3657891547792803894, guid: aa7d6b761243a8e4d8a74e2a903a3424,

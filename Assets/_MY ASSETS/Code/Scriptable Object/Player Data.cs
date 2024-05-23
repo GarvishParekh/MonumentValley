@@ -44,4 +44,5 @@ public class PlayerData : ScriptableObject
     public string starTag;
     public string holdTag;
     public string bezierCurve;
+    public string buttonTag;
 }

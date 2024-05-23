@@ -168,10 +168,17 @@ public class MechanismTrigger : MonoBehaviour
 
                     splineAnimate.Restart(true);
                     transform.SetParent(bezire.GetParent());
-                    transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 0.1f);
+                    transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 1);
 
                     endDirection = bezire.GetEndDirection();
                     StartCoroutine(nameof(BezierAnimation), splineAnimate);        
+                }
+
+                else if (other.CompareTag(playerData.buttonTag))
+                {
+                    ButtonFunction buttonFunction = other.GetComponentInParent<ButtonFunction>();
+
+                    buttonFunction.buttonPressed();
                 }
                 break;
         }

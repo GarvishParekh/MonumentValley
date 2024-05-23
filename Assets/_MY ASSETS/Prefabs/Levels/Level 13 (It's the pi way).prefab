@@ -257,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 2721768506503401313}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.75, z: 2.7499998}
+  m_LocalPosition: {x: 0, y: 0.75, z: 2.9999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -418,7 +418,7 @@ Transform:
   m_GameObject: {fileID: 4920208907546454229}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710784, z: -0, w: -0.70710576}
-  m_LocalPosition: {x: 2.75, y: 0.75, z: -7}
+  m_LocalPosition: {x: 3, y: 0.75, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1588,8 +1588,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationType: 1
   distanceType: 0
-  staffData: {fileID: 0}
-  playerData: {fileID: 0}
+  staffData: {fileID: 11400000, guid: dabe86753d8344341931f8f36a41df2d, type: 2}
+  playerData: {fileID: 11400000, guid: b8f6066713c14e14e89f8c6f81e2f383, type: 2}
   mainClick: {fileID: 0}
   levelData: {fileID: 11400000, guid: 702e024aa487cb142b6f511431b9df63, type: 2}
   jumpEndPoint: {fileID: 3551778258859491292}

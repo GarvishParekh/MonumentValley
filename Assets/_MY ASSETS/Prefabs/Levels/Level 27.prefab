@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1713276585742769648
 Transform:
   m_ObjectHideFlags: 0
@@ -808,6 +808,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8960212007074967044, guid: b3717510c8bc1e549bfa7b90d317f180,
+        type: 3}
+      propertyPath: saffdata
+      value: 
+      objectReference: {fileID: 11400000, guid: dabe86753d8344341931f8f36a41df2d,
+        type: 2}
     - target: {fileID: 8960212007074967044, guid: b3717510c8bc1e549bfa7b90d317f180,
         type: 3}
       propertyPath: finalRotationValue

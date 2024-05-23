@@ -31,3 +31,4 @@ MonoBehaviour:
   starTag: Star
   holdTag: Hold
   bezierCurve: BezierCurve
+  buttonTag: Button

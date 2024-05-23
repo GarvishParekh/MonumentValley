@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 29
+  currentLevel: 32
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -97,10 +97,6 @@ MonoBehaviour:
     startingZoomLevel: 6
     levelCenterPoint: {x: 0, y: 0, z: -3.5}
     ballSartingposition: {x: -3.5, y: 0.85, z: 0}
-  - LevelName: Trapped
-    startingZoomLevel: 8
-    levelCenterPoint: {x: 0, y: 0, z: -3.5}
-    ballSartingposition: {x: -7.5, y: 0.856, z: 2.5}
   - LevelName: Portal
     startingZoomLevel: 8
     levelCenterPoint: {x: 1, y: 0, z: 2}
@@ -113,10 +109,6 @@ MonoBehaviour:
     startingZoomLevel: 8
     levelCenterPoint: {x: 2.5, y: 0, z: 1}
     ballSartingposition: {x: 0, y: 1.856, z: 4}
-  - LevelName: Looping
-    startingZoomLevel: 10
-    levelCenterPoint: {x: -0.5, y: 0, z: -2}
-    ballSartingposition: {x: 2, y: 2.856, z: -4}
   - LevelName: Ground Rotation
     startingZoomLevel: 8
     levelCenterPoint: {x: 0.5, y: 0, z: -2.5}
@@ -145,3 +137,11 @@ MonoBehaviour:
     startingZoomLevel: 6
     levelCenterPoint: {x: 3.5, y: 0, z: 3.5}
     ballSartingposition: {x: 0, y: 0.856, z: 0}
+  - LevelName: Open the Door
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -2.5}
+    ballSartingposition: {x: -3.5, y: 0.856, z: 0}
+  - LevelName: Back To Home
+    startingZoomLevel: 6
+    levelCenterPoint: {x: 3, y: 0, z: 3.5}
+    ballSartingposition: {x: 2, y: -2.648, z: 0}

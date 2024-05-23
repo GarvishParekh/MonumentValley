@@ -16,6 +16,7 @@ TagManager:
   - BezierCurve
   - TurnStart
   - Hold
+  - Button
   layers:
   - Default
   - TransparentFX
