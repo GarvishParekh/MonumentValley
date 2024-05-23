@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12734546, g: 0.13418743, b: 0.121172085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1238,12 +1238,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7670780739517674937}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &502898770 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2716075605831494861, guid: 9ae61b6b0cc55d2469b2c63a1c6bef10,
-    type: 3}
-  m_PrefabInstance: {fileID: 6700528341373100569}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &502898771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3459053010594369937, guid: 9ae61b6b0cc55d2469b2c63a1c6bef10,
@@ -1526,7 +1520,6 @@ MonoBehaviour:
   - {fileID: 620214697}
   - {fileID: 453238730}
   - {fileID: 1268194718}
-  - {fileID: 502898770}
   - {fileID: 1943760046}
   commingSoonCanvas: {fileID: 695249272}
   mainCanvas: {fileID: 652230934}
@@ -3023,11 +3016,11 @@ Transform:
   - {fileID: 620214698}
   - {fileID: 453238731}
   - {fileID: 1268194719}
-  - {fileID: 502898771}
   - {fileID: 1943760047}
   - {fileID: 787739306}
   - {fileID: 1350475692}
   - {fileID: 1619542085}
+  - {fileID: 502898771}
   - {fileID: 690751993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5100,6 +5093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Level 22 (Portal)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183238427929292767, guid: f24c8c0b8d5038b43bacde2b209abaf2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7923014843468063906, guid: f24c8c0b8d5038b43bacde2b209abaf2,
         type: 3}

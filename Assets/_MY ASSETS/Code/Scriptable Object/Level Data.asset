@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 32
+  currentLevel: 31
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -137,10 +137,6 @@ MonoBehaviour:
     startingZoomLevel: 6
     levelCenterPoint: {x: 3.5, y: 0, z: 3.5}
     ballSartingposition: {x: 0, y: 0.856, z: 0}
-  - LevelName: Open the Door
-    startingZoomLevel: 6
-    levelCenterPoint: {x: 0, y: 0, z: -2.5}
-    ballSartingposition: {x: -3.5, y: 0.856, z: 0}
   - LevelName: Back To Home
     startingZoomLevel: 6
     levelCenterPoint: {x: 3, y: 0, z: 3.5}
