@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Splines;
+using UnityEngine.EventSystems;
+using UnityEditor.Rendering;
+using Unity.VisualScripting;
+using UnityEngine.Assertions.Must;
 
 [RequireComponent(typeof(BallFunction))]
 public class MechanismTrigger : MonoBehaviour
@@ -29,6 +33,7 @@ public class MechanismTrigger : MonoBehaviour
     [SerializeField] private float dissolveSpeed = 1.0f;
 
     WaitForSeconds cooldownTime = new WaitForSeconds(0.2f);
+    Transform centerPointTransform;
 
     private void Awake()
     {
@@ -52,7 +57,9 @@ public class MechanismTrigger : MonoBehaviour
                 if (other.CompareTag(playerData.staffTag))
                 {
                     playerRB.velocity = -other.transform.forward * playerData.playerSpeed;
+                    //Debug.Log(playerRB.velocity.normalized);
                     playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
+                    SetBallDirection();
 
                     sfxManager.PlayHitSound();
 
@@ -180,7 +187,28 @@ public class MechanismTrigger : MonoBehaviour
 
                     buttonFunction.buttonPressed();
                 }
+
+                else if (other.CompareTag(playerData.transporterTag))
+                {
+                    playerData.grounCheck = GrounCheck.STOP;
+                    TransporterFunction transporterFunction = other.GetComponentInParent<TransporterFunction>();
+                    endDirection = transporterFunction.GetTransform();
+
+                    transform.position = endDirection.position;
+
+                    playerRB.velocity = endDirection.forward * playerData.playerSpeed;
+                    //playerData.grounCheck = GrounCheck.ONGOING;
+                }
+
                 break;
+        }
+
+        if (other.CompareTag(playerData.centerPointTag))
+        {
+            MoveToCenterPoint moveToCenterPoint = other.GetComponentInParent<MoveToCenterPoint>();
+            centerPointTransform = moveToCenterPoint.GetCenterPoint();
+
+            SetBallToCenter(centerPointTransform.position);
         }
 
         if (other.CompareTag(playerData.completeTag))
@@ -212,7 +240,7 @@ public class MechanismTrigger : MonoBehaviour
 
     private IEnumerator ProtalEffect(Collider other)
     {
-        portalFunction = other.GetComponent<PortalFunction>();
+        portalFunction = other.GetComponentInParent<PortalFunction>();
 
         ballModel.rotation = Quaternion.Euler(portalFunction.GetStartPortalTransform().rotation.eulerAngles);
 
@@ -237,6 +265,49 @@ public class MechanismTrigger : MonoBehaviour
         }
     }
 
+    //To Set player Direction Enum
+    Vector3 playerVelocity;
+    private void SetBallDirection()
+    {
+        playerVelocity = Vector3.zero;
+        playerVelocity = playerRB.velocity.normalized;
+        Debug.Log("Player X Velocity : " + playerVelocity.x);
+        Debug.Log("Player Z Velocity : " + playerVelocity.z);
+
+        if (playerVelocity.x == 1 || playerVelocity.x == -1)
+        {
+            playerData.playerDirection = PlayerDirection.X;
+        }
+        else if (playerVelocity.y == 1 || playerVelocity.y == -1)
+        {
+            playerData.playerDirection = PlayerDirection.Y;
+        }
+        else if (playerVelocity.z == 1 || playerVelocity.z == -1)
+        {
+            playerData.playerDirection = PlayerDirection.Z;
+        }
+    }
+
+    //Move ball to the center of the ground
+    float lerpTime = 0.5f;
+    private void SetBallToCenter(Vector3 _centerPoint)
+    {
+        switch (playerData.playerDirection)
+        {
+            case PlayerDirection.X:
+                LeanTween.moveZ(gameObject, _centerPoint.z, lerpTime);
+                break;
+
+            case PlayerDirection.Y:
+                break;
+
+            case PlayerDirection.Z:
+                LeanTween.moveX(gameObject, _centerPoint.x, lerpTime);
+                break;
+        }
+    }
+
+
     private void TeleportPosition(Collider other)
     {
         //playerRB.velocity = Vector3.zero;
@@ -252,7 +323,6 @@ public class MechanismTrigger : MonoBehaviour
     private void Changeshadervalue(float _values)
     {
         shaderMat.SetFloat("_DissolveValue", _values);
-        Debug.Log(shaderMat.GetFloat("_DissolveValue"));
     }
 
     private IEnumerator CoolingDown()

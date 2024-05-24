@@ -19,9 +19,17 @@ public enum PlayerTrap
 }
 
 
+public enum PlayerDirection
+{
+    X,
+    Y,
+    Z
+}
+
 [CreateAssetMenu(fileName = "Player Data", menuName = "Player Data")]
 public class PlayerData : ScriptableObject
 {
+    public PlayerDirection playerDirection;
     public CooldownStatus cooldownStatus;
     public GrounCheck grounCheck;
     public PlayerTrap playerTrap;
@@ -45,4 +53,6 @@ public class PlayerData : ScriptableObject
     public string holdTag;
     public string bezierCurve;
     public string buttonTag;
+    public string transporterTag;
+    public string centerPointTag;
 }

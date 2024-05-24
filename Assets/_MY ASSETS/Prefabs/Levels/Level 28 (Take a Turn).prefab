@@ -888,8 +888,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4492647566749940386, guid: 385d0a26953faf14eb1cc9c953632931,
         type: 3}
+      propertyPath: m_Method
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492647566749940386, guid: 385d0a26953faf14eb1cc9c953632931,
+        type: 3}
+      propertyPath: m_Duration
+      value: 0.74908036
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492647566749940386, guid: 385d0a26953faf14eb1cc9c953632931,
+        type: 3}
       propertyPath: m_MaxSpeed
-      value: 3.7454019
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492647566749940386, guid: 385d0a26953faf14eb1cc9c953632931,
+        type: 3}
+      propertyPath: m_AlignmentMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5890421185612176746, guid: 385d0a26953faf14eb1cc9c953632931,
         type: 3}

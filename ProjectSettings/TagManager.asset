@@ -17,6 +17,8 @@ TagManager:
   - TurnStart
   - Hold
   - Button
+  - Transporter
+  - CenterPoint
   layers:
   - Default
   - TransparentFX
