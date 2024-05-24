@@ -60,6 +60,7 @@ public class MechanismTrigger : MonoBehaviour
                     //Debug.Log(playerRB.velocity.normalized);
                     playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
                     SetBallDirection();
+                    SetBallToCenter(other.transform.position);
 
                     sfxManager.PlayHitSound();
 
@@ -203,13 +204,13 @@ public class MechanismTrigger : MonoBehaviour
                 break;
         }
 
-        if (other.CompareTag(playerData.centerPointTag))
+        /*if (other.CompareTag(playerData.centerPointTag))
         {
             MoveToCenterPoint moveToCenterPoint = other.GetComponentInParent<MoveToCenterPoint>();
             centerPointTransform = moveToCenterPoint.GetCenterPoint();
 
             SetBallToCenter(centerPointTransform.position);
-        }
+        }*/
 
         if (other.CompareTag(playerData.completeTag))
         {
