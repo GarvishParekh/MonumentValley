@@ -16,7 +16,8 @@ public enum GroundLiftStatus
 public enum HoldAnimationType
 {
     RotateGround,
-    LiftGround
+    LiftGround,
+    Home
 }
 
 
@@ -66,6 +67,10 @@ public class HoldFunction : MonoBehaviour
             case HoldAnimationType.LiftGround:
                 LiftGround(GroundLiftStatus.Lifted);
                 break;
+
+            case HoldAnimationType.Home:
+                break;
+              
         }
     }
 

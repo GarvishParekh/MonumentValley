@@ -9,7 +9,8 @@ public enum AnimationType
 {
     POOL_STICK,
     SPRING,
-    FALL
+    FALL,
+    GRAB_NET
 }
 
 public enum AnimationState

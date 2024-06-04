@@ -23,8 +23,9 @@ public class GroundFunction : MonoBehaviour
     }
     
 
-    private void GroundAnimation()
+    private void GroundAnimation(Material _TrapMat)
     {
+        Debug.Log("Animation method called");
         int animationLoopcount = 5;
 
         float vibrationAnimationSpeed = 0.08f;
@@ -35,11 +36,18 @@ public class GroundFunction : MonoBehaviour
         //First Vibration animation
         LeanTween.moveLocalY(gameObject, 0.12f, vibrationAnimationSpeed).setEaseOutSine().setLoopPingPong(animationLoopcount).setDelay(vibrationAnimationDelay).setOnComplete(() =>
         {
+            Debug.Log("First Animation");
+
             //Second Fall Animation
             LeanTween.moveLocalY(gameObject, -20, fallingAnimationSpeed).setEaseInOutSine().setOnComplete(() =>
             {
+                Debug.Log("Second Animation");
                 //Third back to start position Animation
-                LeanTween.moveLocalY(gameObject, groundStartPosition, resetAnimationSpeed).setEaseInOutSine();
+                LeanTween.moveLocalY(gameObject, groundStartPosition, resetAnimationSpeed).setEaseInOutSine().setOnComplete(() =>
+                {
+                    Debug.Log("Third Animation");
+                    _TrapMat.SetFloat("_Intensity", 0.2f);
+                });
             });
         }); 
     }

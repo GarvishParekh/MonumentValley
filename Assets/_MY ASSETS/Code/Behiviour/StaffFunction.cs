@@ -84,8 +84,23 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
                     }
                 });
                 return;
+
             case AnimationType.SPRING:
                 LeanTween.moveLocalY(gameObject, 0.22f, levelData.animationSpeed).setEaseInSine().setLoopPingPong(1);
+                return;
+
+            case AnimationType.GRAB_NET:
+                if (mycollider != null)
+                {
+                    mycollider.enabled = true;
+                }
+                LeanTween.scaleY(gameObject, 1.2f, levelData.animationSpeed).setEaseInSine().setLoopPingPong(1).setOnComplete(() =>
+                {
+                    if (mycollider != null)
+                    {
+                        mycollider.enabled = false;
+                    }
+                });
                 return;
         }
     }

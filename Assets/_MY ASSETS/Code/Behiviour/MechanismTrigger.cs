@@ -39,6 +39,7 @@ public class MechanismTrigger : MonoBehaviour
     {
         ballFunction = GetComponent<BallFunction>();    
         playerRB = GetComponent<Rigidbody>();
+        playerData.grabStatus = GrabStatus.NORMAL;
 
         Changeshadervalue(shaderShowvalue);
         //Time.timeScale = 0.2f;
@@ -78,7 +79,7 @@ public class MechanismTrigger : MonoBehaviour
 
                     // jump animation
                     LeanTween.move(gameObject, getEndPoint, 0.4f).setEaseOutSine();
-                    LeanTween.moveY(ballModel.gameObject, 2f, 0.2f).setEaseOutSine().setLoopPingPong(1).setOnComplete(() =>
+                    LeanTween.moveLocalY(ballModel.gameObject, 2f, 0.2f).setEaseOutSine().setLoopPingPong(1).setOnComplete(() =>
                     {
                         // restore velocity
                         playerRB.velocity = lastVelocity;
@@ -125,9 +126,16 @@ public class MechanismTrigger : MonoBehaviour
                     switch (playerData.playerTrap)
                     {
                         case PlayerTrap.FREE:
+                            
                             Debug.Log("Trap");
                     
-                            BallFunction.TrapActivate?.Invoke();
+                            MeshRenderer renderer = other.gameObject.GetComponent<MeshRenderer>();
+                            Material trapMat = renderer.material;
+                            trapMat.SetFloat("_Intensity", 3);
+
+                            BallFunction.TrapActivate?.Invoke(trapMat);
+
+
                             playerRB.velocity = Vector3.zero;
 
                             playerData.playerTrap = PlayerTrap.TRAPPED;
@@ -164,22 +172,37 @@ public class MechanismTrigger : MonoBehaviour
                 //Bezier Curve Effect
                 else if (other.CompareTag(playerData.bezierCurve))
                 {
-                    Debug.Log("Turn START");
-
                     Bezier bezire = other.GetComponentInParent<Bezier>();
                     SplineAnimate splineAnimate = bezire.GetSpline();
 
-                    splineAnimate.enabled = true;
+                    switch (playerData.grabStatus)
+                    {
+                        case GrabStatus.Grabbed:
+                                transform.parent = null;
+                        
+                                playerData.grabStatus = GrabStatus.NORMAL;
+                                playerData.grounCheck = GrounCheck.ONGOING;
+                        
+                                endDirection = bezire.GetEndDirection();
+                                playerRB.velocity = endDirection.forward * playerData.playerSpeed;
+                            break;
 
-                    playerRB.velocity = Vector3.zero;
-                    playerData.grounCheck = GrounCheck.STOP;
+                        case GrabStatus.NORMAL:
+                                Debug.Log("Turn START");
+                                splineAnimate.enabled = true;
 
-                    splineAnimate.Restart(true);
-                    transform.SetParent(bezire.GetParent());
-                    transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 1);
+                                playerRB.velocity = Vector3.zero;
+                                playerData.grounCheck = GrounCheck.STOP;
 
-                    endDirection = bezire.GetEndDirection();
-                    StartCoroutine(nameof(BezierAnimation), splineAnimate);        
+                                splineAnimate.Restart(true);
+                                transform.SetParent(bezire.GetParent());
+                                transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 1);
+
+                                endDirection = bezire.GetEndDirection();
+                                playerData.grabStatus = GrabStatus.Grabbed;
+                                StartCoroutine(nameof(BezierAnimation), splineAnimate);        
+                            break;
+                    }
                 }
 
                 else if (other.CompareTag(playerData.buttonTag))
@@ -201,16 +224,28 @@ public class MechanismTrigger : MonoBehaviour
                     //playerData.grounCheck = GrounCheck.ONGOING;
                 }
 
+                else if(other.CompareTag(playerData.reverseTag))
+                {
+                    MeshRenderer renderer = other.gameObject.GetComponent<MeshRenderer>();
+
+                    renderer.material.SetFloat("_Intensity", 3);
+                    LeanTween.rotateAroundLocal(other.gameObject, Vector3.up, 180, 1).setOnComplete(() =>
+                    {
+                        renderer.material.SetFloat("_Intensity", 0.5f);
+                    });
+                    
+                    playerRB.velocity = -playerRB.velocity;
+                }
+                
+                //When door is closed and ball try to go through door
+                else if (other.CompareTag(playerData.doorClosedTag))
+                {
+                    playerRB.velocity = Vector3.zero;
+                }
+
                 break;
         }
 
-        /*if (other.CompareTag(playerData.centerPointTag))
-        {
-            MoveToCenterPoint moveToCenterPoint = other.GetComponentInParent<MoveToCenterPoint>();
-            centerPointTransform = moveToCenterPoint.GetCenterPoint();
-
-            SetBallToCenter(centerPointTransform.position);
-        }*/
 
         if (other.CompareTag(playerData.completeTag))
         {
@@ -221,18 +256,16 @@ public class MechanismTrigger : MonoBehaviour
     }
 
     Transform endDirection;
-    IEnumerator BezierAnimation(SplineAnimate sa)
+    IEnumerator BezierAnimation(SplineAnimate splineAnimate)
     {
         bool isplaying = true;
         while (isplaying != false)
         {
-            Debug.Log($"Animation is playing");
-            Debug.Log(isplaying);
-
-            isplaying = sa.IsPlaying;
+            isplaying = splineAnimate.IsPlaying;
             yield return null;
         }
         Debug.Log($"Animation completed");
+        playerData.grabStatus = GrabStatus.NORMAL;
         playerData.grounCheck = GrounCheck.ONGOING;
         
         transform.parent = null;

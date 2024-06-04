@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BallFunction : MonoBehaviour
 {
-    public static Action TrapActivate;
+    public static Action<Material> TrapActivate;
     public static Action ResetGround;
     public static Action BallReset;
     public static Action<Vector3> TurnBall;

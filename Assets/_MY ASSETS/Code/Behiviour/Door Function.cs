@@ -4,14 +4,13 @@ public class DoorFunction : MonoBehaviour
 {
     [SerializeField] private GameObject leftDoor;
     [SerializeField] private GameObject rightDoor;
+    [SerializeField] private BoxCollider boxCollider;
 
     public Vector3 leftDoorRotation;
     public Vector3 rightDoorRotation;
 
     [SerializeField] private Vector3 defaultRotationLeft;
     [SerializeField] private Vector3 defaultRotationRight;
-
-
 
     private void OnEnable()
     {
@@ -26,6 +25,7 @@ public class DoorFunction : MonoBehaviour
 
     public void DoorAnimation()
     {
+        boxCollider.enabled = false;
         LeanTween.rotateLocal(leftDoor, leftDoorRotation, 0.8f);
         LeanTween.rotateLocal(rightDoor, rightDoorRotation, 0.8f);
     }
@@ -33,6 +33,7 @@ public class DoorFunction : MonoBehaviour
 
     public void resetDoorAnimation()
     {
+        boxCollider.enabled = true;
         LeanTween.rotateLocal(leftDoor, defaultRotationLeft, 0.8f);
         LeanTween.rotateLocal(rightDoor, defaultRotationRight, 0.8f);
     }

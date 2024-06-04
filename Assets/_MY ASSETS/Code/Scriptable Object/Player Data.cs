@@ -18,6 +18,11 @@ public enum PlayerTrap
     FREE
 }
 
+public enum GrabStatus
+{
+    Grabbed,
+    NORMAL
+}
 
 public enum PlayerDirection
 {
@@ -33,6 +38,7 @@ public class PlayerData : ScriptableObject
     public CooldownStatus cooldownStatus;
     public GrounCheck grounCheck;
     public PlayerTrap playerTrap;
+    public GrabStatus grabStatus;   
     public float playerSpeed;
 
     public Vector3 playerPosition;
@@ -55,4 +61,6 @@ public class PlayerData : ScriptableObject
     public string buttonTag;
     public string transporterTag;
     public string centerPointTag;
+    public string reverseTag;
+    public string doorClosedTag;
 }

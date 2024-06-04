@@ -19,6 +19,10 @@ TagManager:
   - Button
   - Transporter
   - CenterPoint
+  - Reverse
+  - Ball
+  - Grab
+  - doorClosed
   layers:
   - Default
   - TransparentFX
