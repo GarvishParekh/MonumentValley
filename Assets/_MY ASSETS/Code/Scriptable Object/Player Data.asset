@@ -38,3 +38,4 @@ MonoBehaviour:
   centerPointTag: CenterPoint
   reverseTag: Reverse
   doorClosedTag: doorClosed
+  connectorTag: Connector

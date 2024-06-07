@@ -10,3 +10,10 @@ public interface IOneClickAnimation
 {
     public void Animate();
 }
+
+public interface IBlockAnimation
+{
+    public void PlayAnimation();
+
+    public void RewindAnimation();
+}

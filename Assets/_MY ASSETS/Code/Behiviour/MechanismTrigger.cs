@@ -18,6 +18,7 @@ public class MechanismTrigger : MonoBehaviour
 
     [Header ("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private CollectiblesData collectiblesData;
 
     [Header("<size=15>[COMPONENTS]")]
     [SerializeField] private Transform ballModel;
@@ -94,7 +95,7 @@ public class MechanismTrigger : MonoBehaviour
                 else if (other.CompareTag(playerData.fallTag))
                 {
                     StaffFunction staffFunction = other.GetComponent<StaffFunction>();
-                    
+
                     // manager velocity
                     Vector3 lastVelocity = playerRB.velocity;
                     playerRB.velocity = Vector3.zero;
@@ -126,9 +127,9 @@ public class MechanismTrigger : MonoBehaviour
                     switch (playerData.playerTrap)
                     {
                         case PlayerTrap.FREE:
-                            
+
                             Debug.Log("Trap");
-                    
+
                             MeshRenderer renderer = other.gameObject.GetComponent<MeshRenderer>();
                             Material trapMat = renderer.material;
                             trapMat.SetFloat("_Intensity", 3);
@@ -139,7 +140,7 @@ public class MechanismTrigger : MonoBehaviour
                             playerRB.velocity = Vector3.zero;
 
                             playerData.playerTrap = PlayerTrap.TRAPPED;
-                        break;
+                            break;
                     }
                 }
 
@@ -157,15 +158,15 @@ public class MechanismTrigger : MonoBehaviour
                 }
 
                 //Ground Rotate Effect
-                else if(other.CompareTag(playerData.holdTag))
+                else if (other.CompareTag(playerData.holdTag))
                 {
                     playerRB.velocity = Vector3.zero;
 
                     HoldFunction holdFunction = other.GetComponentInParent<HoldFunction>();
-                   
+
                     transform.SetParent(holdFunction.GetParent());
                     transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 1);
-                    
+
                     holdFunction.PlayAnimation();
                 }
 
@@ -178,36 +179,36 @@ public class MechanismTrigger : MonoBehaviour
                     switch (playerData.grabStatus)
                     {
                         case GrabStatus.Grabbed:
-                                transform.parent = null;
-                        
-                                playerData.grabStatus = GrabStatus.NORMAL;
-                                playerData.grounCheck = GrounCheck.ONGOING;
-                        
-                                endDirection = bezire.GetEndDirection();
-                                playerRB.velocity = endDirection.forward * playerData.playerSpeed;
+                            transform.parent = null;
+
+                            playerData.grabStatus = GrabStatus.NORMAL;
+                            playerData.grounCheck = GrounCheck.ONGOING;
+
+                            endDirection = bezire.GetEndDirection();
+                            playerRB.velocity = endDirection.forward * playerData.playerSpeed;
                             break;
 
                         case GrabStatus.NORMAL:
-                                Debug.Log("Turn START");
-                                splineAnimate.enabled = true;
+                            Debug.Log("Turn START");
+                            splineAnimate.enabled = true;
 
-                                playerRB.velocity = Vector3.zero;
-                                playerData.grounCheck = GrounCheck.STOP;
+                            playerRB.velocity = Vector3.zero;
+                            playerData.grounCheck = GrounCheck.STOP;
 
-                                splineAnimate.Restart(true);
-                                transform.SetParent(bezire.GetParent());
-                                transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 1);
+                            splineAnimate.Restart(true);
+                            transform.SetParent(bezire.GetParent());
+                            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 1);
 
-                                endDirection = bezire.GetEndDirection();
-                                playerData.grabStatus = GrabStatus.Grabbed;
-                                StartCoroutine(nameof(BezierAnimation), splineAnimate);        
+                            endDirection = bezire.GetEndDirection();
+                            playerData.grabStatus = GrabStatus.Grabbed;
+                            StartCoroutine(nameof(BezierAnimation), splineAnimate);
                             break;
                     }
                 }
 
                 else if (other.CompareTag(playerData.buttonTag))
                 {
-                    ButtonFunction buttonFunction = other.GetComponentInParent<ButtonFunction>();
+                    DoorButtonFunction buttonFunction = other.GetComponentInParent<DoorButtonFunction>();
 
                     buttonFunction.buttonPressed();
                 }
@@ -224,7 +225,7 @@ public class MechanismTrigger : MonoBehaviour
                     //playerData.grounCheck = GrounCheck.ONGOING;
                 }
 
-                else if(other.CompareTag(playerData.reverseTag))
+                else if (other.CompareTag(playerData.reverseTag))
                 {
                     MeshRenderer renderer = other.gameObject.GetComponent<MeshRenderer>();
 
@@ -233,16 +234,15 @@ public class MechanismTrigger : MonoBehaviour
                     {
                         renderer.material.SetFloat("_Intensity", 0.5f);
                     });
-                    
+
                     playerRB.velocity = -playerRB.velocity;
                 }
-                
+
                 //When door is closed and ball try to go through door
                 else if (other.CompareTag(playerData.doorClosedTag))
                 {
                     playerRB.velocity = Vector3.zero;
                 }
-
                 break;
         }
 

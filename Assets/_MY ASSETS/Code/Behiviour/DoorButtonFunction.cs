@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ButtonFunction : MonoBehaviour
+public class DoorButtonFunction : MonoBehaviour
 {
     [Header (" [ SCRIPTS ] ")]
     [SerializeField] private DoorFunction doorFunction;
@@ -22,6 +22,7 @@ public class ButtonFunction : MonoBehaviour
 
     public void buttonPressed()
     {
+        //Door button pressed Animation
         LeanTween.moveLocalZ(button, -0.1f, animationTime);
 
         doorFunction.DoorAnimation();
@@ -29,6 +30,7 @@ public class ButtonFunction : MonoBehaviour
 
     public void resetButton()
     {
+        //Door button reset Animation
         LeanTween.moveLocalZ(button, 0, animationTime);
     }
 }

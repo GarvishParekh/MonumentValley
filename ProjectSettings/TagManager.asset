@@ -23,6 +23,8 @@ TagManager:
   - Ball
   - Grab
   - doorClosed
+  - Freeze
+  - Connector
   layers:
   - Default
   - TransparentFX

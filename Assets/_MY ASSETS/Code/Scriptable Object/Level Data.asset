@@ -181,3 +181,7 @@ MonoBehaviour:
     startingZoomLevel: 10
     levelCenterPoint: {x: -0.5, y: 0, z: -2.5}
     ballSartingposition: {x: -5, y: 0.48, z: 0}
+  - LevelName: Connect path
+    startingZoomLevel: 10
+    levelCenterPoint: {x: -1, y: 0, z: -5}
+    ballSartingposition: {x: -6.5, y: 0.48, z: 0}

@@ -8,5 +8,4 @@ public class TransporterFunction : MonoBehaviour
     {
         return endPoint;
     }
-
 }

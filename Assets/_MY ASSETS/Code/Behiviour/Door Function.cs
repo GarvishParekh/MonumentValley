@@ -6,8 +6,8 @@ public class DoorFunction : MonoBehaviour
     [SerializeField] private GameObject rightDoor;
     [SerializeField] private BoxCollider boxCollider;
 
-    public Vector3 leftDoorRotation;
-    public Vector3 rightDoorRotation;
+    [SerializeField] private Vector3 leftDoorRotation;
+    [SerializeField] private Vector3 rightDoorRotation;
 
     [SerializeField] private Vector3 defaultRotationLeft;
     [SerializeField] private Vector3 defaultRotationRight;
@@ -23,9 +23,12 @@ public class DoorFunction : MonoBehaviour
     }
 
 
+    //This function is called when ingame door button is trigger or pressed.
     public void DoorAnimation()
     {
+        //Collider is off so ball can pass.
         boxCollider.enabled = false;
+
         LeanTween.rotateLocal(leftDoor, leftDoorRotation, 0.8f);
         LeanTween.rotateLocal(rightDoor, rightDoorRotation, 0.8f);
     }
@@ -33,7 +36,9 @@ public class DoorFunction : MonoBehaviour
 
     public void resetDoorAnimation()
     {
+        //Collider is on beacuse door is closed.
         boxCollider.enabled = true;
+
         LeanTween.rotateLocal(leftDoor, defaultRotationLeft, 0.8f);
         LeanTween.rotateLocal(rightDoor, defaultRotationRight, 0.8f);
     }

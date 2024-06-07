@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public enum GroundType
@@ -9,7 +7,7 @@ public enum GroundType
     Rotation
 }
 
-public enum MovingTileDirection
+public enum MovingGroundDirection
 {
     X,
     Y,
@@ -19,7 +17,7 @@ public enum MovingTileDirection
 public class GroundFunction : MonoBehaviour
 {
     public GroundType groundType;
-    public MovingTileDirection tileDirection;
+    public MovingGroundDirection groundDirection;
     
     [Header("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private PlayerData playerData;
@@ -44,7 +42,7 @@ public class GroundFunction : MonoBehaviour
     {
         BallFunction.TrapActivate += GroundAnimation;
     }
-
+     
     private void OnDisable()
     {
         BallFunction.TrapActivate -= GroundAnimation;
@@ -75,6 +73,7 @@ public class GroundFunction : MonoBehaviour
     }
 
 
+    //This animation is play when player activate Trap.
     private void GroundAnimation(Material _TrapMat)
     {
         Debug.Log("Animation method called");
@@ -104,23 +103,25 @@ public class GroundFunction : MonoBehaviour
         }); 
     }
 
+
+    //Moving Ground Animation according to direction
     private void MovingGroundAnimation()
     {
         float tempSpeed = (Mathf.Abs(sineWave) + 0.2f) * waveSpeed; 
         Degree += Time.deltaTime * tempSpeed;
         sineWave = (Mathf.Sin(Degree) * waveHeight) + heightOffset;
 
-        switch (tileDirection)
+        switch (groundDirection)
         {
-            case MovingTileDirection.X:
+            case MovingGroundDirection.X:
                     tilePositionVector.x = sineWave;
                 break;
 
-            case MovingTileDirection.Y:
+            case MovingGroundDirection.Y:
                     tilePositionVector.y = sineWave;
                 break;
 
-            case MovingTileDirection.Z:
+            case MovingGroundDirection.Z:
                 tilePositionVector.z = sineWave;  
                 break;
         }
@@ -128,9 +129,11 @@ public class GroundFunction : MonoBehaviour
     }
 
 
+    //To move ground in circle animation
     float tempSpeed = 0;
     private void groundRotateAroundAnimation()
     {
+        //To slow down ground animation at sin0 and cos90 angel
         if (cosWave < 0 && sineWave > 0)
         {
             tempSpeed = ((Mathf.Abs(cosWave) * Mathf.Abs(sineWave)) + 0.05f) * waveSpeed;
