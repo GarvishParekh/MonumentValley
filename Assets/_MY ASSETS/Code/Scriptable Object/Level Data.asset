@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 39
+  currentLevel: 42
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -182,6 +182,6 @@ MonoBehaviour:
     levelCenterPoint: {x: -0.5, y: 0, z: -2.5}
     ballSartingposition: {x: -5, y: 0.48, z: 0}
   - LevelName: Connect path
-    startingZoomLevel: 10
+    startingZoomLevel: 6
     levelCenterPoint: {x: -1, y: 0, z: -5}
     ballSartingposition: {x: -6.5, y: 0.48, z: 0}

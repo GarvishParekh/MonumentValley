@@ -11,13 +11,24 @@ public class PathConnectorAnimation : MonoBehaviour, IBlockAnimation
     [Header ("<size=15>[ANIMATER GROUNDS]>")]
     [SerializeField] private List<GameObject> blocks = new List<GameObject>();    
 
+    [Header ("<size=15>[Staffs]>")]
+    [SerializeField] private List<GameObject> staffs = new List<GameObject>();    
+
 
     public void PlayAnimation()
     {
-        ObjectStatus(false);
+        Invoke("InvokeObjectStatus", 0.4f);
+
+        //ObjectStatus(false);
+
         foreach (var block in blocks) 
         {
             block.GetComponent<IBlockAnimation>().PlayAnimation();
+        }
+
+        foreach (var staff in staffs)
+        {
+            staff.GetComponent<IBlockAnimation>().PlayAnimation();
         }
     }
 
@@ -30,17 +41,26 @@ public class PathConnectorAnimation : MonoBehaviour, IBlockAnimation
             blocks[i].GetComponent<IBlockAnimation>().RewindAnimation();
         }
 
-        /*foreach (var block in blocks)
+        foreach (var staff in staffs)
         {
-            block.GetComponent<IBlockAnimation>().RewindAnimation();
-        }*/
+            staff.GetComponent<IBlockAnimation>().RewindAnimation();
+        }
     }
+    
+    private void InvokeObjectStatus()
+    {
+        ObjectStatus(false);
+    }
+
 
     private void ObjectStatus(bool check)
     {
         foreach (GameObject obj in objectToDisable)
         {
-            obj.SetActive(check);
+            if (check)
+                LeanTween.scale(obj, Vector3.one, 0.25f).setEaseInOutSine().setEaseInOutBounce();
+            else if (!check)
+                LeanTween.scale(obj, Vector3.zero, 0.25f).setEaseInOutSine().setEaseInOutBounce();
         }
     }
 }

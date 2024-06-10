@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Splines;
-using System.Collections;
 
 public class Bezier : MonoBehaviour
 {

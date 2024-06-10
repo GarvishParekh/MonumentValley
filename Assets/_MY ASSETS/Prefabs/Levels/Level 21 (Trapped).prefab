@@ -31,10 +31,10 @@ Transform:
   m_Children:
   - {fileID: 8533360524502521260}
   - {fileID: 6553576804595158060}
+  - {fileID: 8389944596587442756}
+  - {fileID: 1830339050200335578}
   - {fileID: 1482299480361050222}
   - {fileID: 8372540691576920323}
-  - {fileID: 1830339050200335578}
-  - {fileID: 8389944596587442756}
   - {fileID: 2929004599884214099}
   m_Father: {fileID: 1139376738801634506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -776,7 +776,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68750460acbc9cb4fa84a51dcbde52db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundType: 0
+  groundDirection: 0
   playerData: {fileID: 11400000, guid: b8f6066713c14e14e89f8c6f81e2f383, type: 2}
+  movingTile: {fileID: 0}
+  Degree: 0
+  waveSpeed: 1
+  waveHeight: 1
+  heightOffset: 0
+  rotationValue: 0
+  rotationSpeed: 0
 --- !u!4 &3271753461268929976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2725757197182382998, guid: 655a254111c41a4479ea595c08f0e4a5,

@@ -3,11 +3,12 @@ using UnityEngine;
 public class StaffFunction : MonoBehaviour, IOneClickAnimation
 {
     SFXManager sfxManager;
+    StaffManager staffManager;
 
     Collider mycollider;
 
     [SerializeField] private AnimationType animationType;   
-    [SerializeField] private DistanceType distanceType;
+    public DistanceType distanceType;
 
     [Header ("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private StaffData staffData;
@@ -18,16 +19,28 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
     [SerializeField] private LevelData levelData;
 
     [Header ("<size=15>[COMPONENTS]")]
+    [SerializeField] private Transform siblingParent;
     [SerializeField] private Transform jumpEndPoint;
 
     [Header("<size=15>[VALUES]")]
     [SerializeField] private float dropSpeed = 0.4f;
+
+    public int staffIndex;
 
     Transform parentObject;
     float distance;
 
     private void Awake()
     {
+        if (siblingParent == null)
+        {
+            staffIndex = transform.parent.GetSiblingIndex();
+        }
+        else 
+        {
+            staffIndex = siblingParent.parent.GetSiblingIndex();
+        }
+
         parentObject = transform.parent;
 
         mycollider = GetComponent<Collider>();  
@@ -46,6 +59,7 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
     private void Start()
     {
         sfxManager = SFXManager.instance;
+        staffManager = StaffManager.Instance;
     }
 
     private void Update()
@@ -56,7 +70,8 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
                 switch (levelData.cameraAnimation)
                 {
                     case CameraAnimation.COMPLETED: 
-                        CheckPlayerPosition();
+                        //CheckPlayerPosition(staffManager.staffIndex);
+                        //playStaffAnimation(0);
                         break;
                 }
                 break;
@@ -108,6 +123,13 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
     private void OnEnable()
     {
         mainClick.AddToStaffCollection(this.gameObject);
+
+        StaffManager.IndexChange += CheckPlayerPosition;
+    }
+
+    private void OnDisable()
+    {
+        StaffManager.IndexChange -= CheckPlayerPosition;
     }
 
     public Vector3 GetEndPosition()
@@ -115,31 +137,59 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
         return jumpEndPoint.position;
     }
 
-    public void CheckPlayerPosition()
+    public void CheckPlayerPosition(int _index)
     {
+        Debug.Log("Player position check");
         distance = Vector3.Distance(transform.position, playerData.playerPosition);
-        if (distance < staffData.distanceThreshold)
+
+        switch (animationType)
         {
-            switch (distanceType)
-            {
-                case DistanceType.FAR:
+            case AnimationType.POOL_STICK:
+                    if (_index != staffIndex)
+                    {
+                        LeanTween.scale(parentObject.gameObject, Vector3.zero, staffData.endAnimationSpeed).setEaseInOutSine();
+                        return;
+                    }
+
                     LeanTween.scale(parentObject.gameObject, Vector3.one, staffData.startAnimationSpeed).setEaseInOutSine();
                     sfxManager.PlayStaffGrowSound();
-                    break;
-            }
-            distanceType = DistanceType.CLOSE;
-        }
-        else
-        {
-            switch (distanceType)
-            {
-                case DistanceType.CLOSE:
-                    LeanTween.scale(parentObject.gameObject, Vector3.zero, staffData.endAnimationSpeed).setEaseInOutSine();
-                    break;
-            }
-            distanceType = DistanceType.FAR;
+                break;
         }
     }
+
+    public void staffCloseAnimation()
+    {
+        LeanTween.scale(parentObject.gameObject, Vector3.zero, staffData.endAnimationSpeed).setEaseInOutSine();
+    }
+
+    /*private void playStaffAnimation(int _staffIndex)
+    {
+        if (_staffIndex == staffIndex)
+        {
+            if (distance < staffData.distanceThreshold)
+            {
+                Debug.Log(staffIndex);
+                switch (distanceType)
+                {
+                    case DistanceType.FAR:
+                        LeanTween.scale(parentObject.gameObject, Vector3.one, staffData.startAnimationSpeed).setEaseInOutSine();
+                        sfxManager.PlayStaffGrowSound();
+                        break;
+                }
+                distanceType = DistanceType.CLOSE;
+            }
+            else
+            {
+                switch (distanceType)
+                {
+                    case DistanceType.CLOSE:
+                        LeanTween.scale(parentObject.gameObject, Vector3.zero, staffData.endAnimationSpeed).setEaseInOutSine();
+                        break;
+                }
+                distanceType = DistanceType.FAR;
+            }
+        }
+    }*/
 
     public float GetDropSpeed()
     {

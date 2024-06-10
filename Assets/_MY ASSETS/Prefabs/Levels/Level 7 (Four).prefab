@@ -29,9 +29,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 942678472842967043}
   - {fileID: 6766065536321147946}
   - {fileID: 6208245561553770295}
+  - {fileID: 942678472842967043}
   m_Father: {fileID: 3261228860101825968}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2170420483185341350
@@ -346,12 +346,12 @@ PrefabInstance:
     - target: {fileID: 5424133252781775142, guid: 243f5a2e34f8b064386887e19f800e47,
         type: 3}
       propertyPath: m_Name
-      value: Staff Holder (2)
+      value: Staff Holder (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8074811914158443929, guid: 243f5a2e34f8b064386887e19f800e47,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0000000072169257
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8074811914158443929, guid: 243f5a2e34f8b064386887e19f800e47,
         type: 3}
@@ -420,7 +420,7 @@ PrefabInstance:
     - target: {fileID: 5424133252781775142, guid: 243f5a2e34f8b064386887e19f800e47,
         type: 3}
       propertyPath: m_Name
-      value: Staff Holder (1)
+      value: Staff Holder
       objectReference: {fileID: 0}
     - target: {fileID: 8074811914158443929, guid: 243f5a2e34f8b064386887e19f800e47,
         type: 3}
@@ -1382,7 +1382,7 @@ PrefabInstance:
     - target: {fileID: 5424133252781775142, guid: 243f5a2e34f8b064386887e19f800e47,
         type: 3}
       propertyPath: m_Name
-      value: Staff Holder
+      value: Staff Holder (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8074811914158443929, guid: 243f5a2e34f8b064386887e19f800e47,
         type: 3}

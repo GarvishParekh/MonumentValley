@@ -15,6 +15,7 @@ public class MechanismTrigger : MonoBehaviour
     [Header ("<size=15>[SCRIPT]")]
     SFXManager sfxManager;
     PortalFunction portalFunction;
+    StaffManager staffManager;
 
     [Header ("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private PlayerData playerData;
@@ -49,6 +50,7 @@ public class MechanismTrigger : MonoBehaviour
     private void Start()
     {
         sfxManager = SFXManager.instance;
+        staffManager = StaffManager.Instance;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,8 +61,15 @@ public class MechanismTrigger : MonoBehaviour
                 if (other.CompareTag(playerData.staffTag))
                 {
                     playerRB.velocity = -other.transform.forward * playerData.playerSpeed;
+                    StaffFunction staffFunction = other.GetComponent<StaffFunction>();
+                    staffFunction.staffCloseAnimation();
+
+                    staffManager.currentIndex++;
+                    staffFunction.distanceType = DistanceType.FAR;
+
                     //Debug.Log(playerRB.velocity.normalized);
                     playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
+                    
                     SetBallDirection();
                     SetBallToCenter(other.transform.position);
 
@@ -73,7 +82,7 @@ public class MechanismTrigger : MonoBehaviour
                     // manager velocity
                     Vector3 lastVelocity = playerRB.velocity;
                     playerRB.velocity = Vector3.zero;
-
+                    staffManager.currentIndex++;
                     // get jump end point
                     Vector3 getEndPoint = other.GetComponent<StaffFunction>().GetEndPosition();
                     playerData.grounCheck = GrounCheck.STOP;
@@ -173,6 +182,7 @@ public class MechanismTrigger : MonoBehaviour
                 //Bezier Curve Effect
                 else if (other.CompareTag(playerData.bezierCurve))
                 {
+                    staffManager.currentIndex++;
                     Bezier bezire = other.GetComponentInParent<Bezier>();
                     SplineAnimate splineAnimate = bezire.GetSpline();
 

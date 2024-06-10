@@ -300,9 +300,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7838981992682752668}
+  - {fileID: 8517612342641325654}
   - {fileID: 7378967320677520821}
   - {fileID: 7762317954405077879}
-  - {fileID: 8517612342641325654}
   - {fileID: 3088506905582187255}
   m_Father: {fileID: 991914430511148422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -564,6 +564,7 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 702e024aa487cb142b6f511431b9df63, type: 2}
   jumpEndPoint: {fileID: 0}
   dropSpeed: 0.4
+  staffIndex: 0
 --- !u!1 &5308344658420266866
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +732,7 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 702e024aa487cb142b6f511431b9df63, type: 2}
   jumpEndPoint: {fileID: 3894605787284770195}
   dropSpeed: 0.4
+  staffIndex: 1
 --- !u!65 &5484990908331082541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -985,6 +987,7 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 702e024aa487cb142b6f511431b9df63, type: 2}
   jumpEndPoint: {fileID: 0}
   dropSpeed: 0.4
+  staffIndex: 0
 --- !u!1 &6377549148386940923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1213,7 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 702e024aa487cb142b6f511431b9df63, type: 2}
   jumpEndPoint: {fileID: 0}
   dropSpeed: 0.4
+  staffIndex: 0
 --- !u!1 &7493190915001214692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,6 +2754,7 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 702e024aa487cb142b6f511431b9df63, type: 2}
   jumpEndPoint: {fileID: 3214496205185584083}
   dropSpeed: 0.4
+  staffIndex: 4
 --- !u!65 &3504338457722658065
 BoxCollider:
   m_ObjectHideFlags: 0
