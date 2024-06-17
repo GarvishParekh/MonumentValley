@@ -69,7 +69,7 @@ public class MechanismTrigger : MonoBehaviour
 
                     //Debug.Log(playerRB.velocity.normalized);
                     playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
-                    
+
                     SetBallDirection();
                     SetBallToCenter(other.transform.position);
 
@@ -252,6 +252,16 @@ public class MechanismTrigger : MonoBehaviour
                 else if (other.CompareTag(playerData.doorClosedTag))
                 {
                     playerRB.velocity = Vector3.zero;
+                }
+
+                else if (other.CompareTag(playerData.staffResetTag))
+                {
+                    staffManager.currentIndex = 0;
+                }
+
+                else if (other.CompareTag(playerData.staffIncrementTag))
+                {
+                    staffManager.currentIndex++;
                 }
                 break;
         }

@@ -71,4 +71,6 @@ public class PlayerData : ScriptableObject
     public string reverseTag;
     public string doorClosedTag;
     public string connectorTag;
+    public string staffResetTag;
+    public string staffIncrementTag;
 }

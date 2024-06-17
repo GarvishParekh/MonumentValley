@@ -17,6 +17,7 @@ MonoBehaviour:
   grounCheck: 1
   playerTrap: 1
   grabStatus: 0
+  itemStatus: 0
   playerSpeed: 5
   playerPosition: {x: 3.228601, y: 2.071, z: -0.72860074}
   rayCastLenght: 1.1
@@ -39,3 +40,5 @@ MonoBehaviour:
   reverseTag: Reverse
   doorClosedTag: doorClosed
   connectorTag: Connector
+  staffResetTag: ResetStaffCount
+  staffIncrementTag: IncrementStaffCount

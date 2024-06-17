@@ -37,7 +37,9 @@ public class LevelInformation
     public string LevelName;
 
     [Header ("[ Set Up Values ]")]
+    public float minZoomLevel = 4;
     public float startingZoomLevel = 5;
+    public float maxZoomLevel = 4;
     public Vector3 levelCenterPoint = Vector3.zero;
     public Vector3 ballSartingposition = Vector3.zero;
 }

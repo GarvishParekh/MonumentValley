@@ -25,6 +25,8 @@ TagManager:
   - doorClosed
   - Freeze
   - Connector
+  - ResetStaffCount
+  - IncrementStaffCount
   layers:
   - Default
   - TransparentFX
