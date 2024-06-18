@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+
 public enum StaffAnimationState
 {
     STATIC,
@@ -11,8 +12,8 @@ public enum StaffAnimationState
 public class MainClick : MonoBehaviour
 {
     [SerializeField] private StaffAnimationState staffAnimationState;
-    [SerializeField] private List<GameObject> staffsCollection = new List<GameObject>();
     [SerializeField] private WaitForSeconds animationScale = new WaitForSeconds(0.4f);
+    public HashSet<GameObject> staffsCollection = new HashSet<GameObject>();
 
     private void Awake()
     {

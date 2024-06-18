@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e949dd2a79e214abbc577c49c6097f, type: 3}
   m_Name: Staff Data
   m_EditorClassIdentifier: 
-  distanceThreshold: 5
+  animationState: 0
+  distanceThreshold: 4
   startAnimationSpeed: 0.2
   endAnimationSpeed: 0.2

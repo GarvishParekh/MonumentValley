@@ -8,6 +8,25 @@ TagManager:
   - CameraHolder
   - Complete
   - Spring
+  - Fall
+  - Trap
+  - Portal
+  - ShaderTrigger
+  - Star
+  - BezierCurve
+  - TurnStart
+  - Hold
+  - Button
+  - Transporter
+  - CenterPoint
+  - Reverse
+  - Ball
+  - Grab
+  - doorClosed
+  - Freeze
+  - Connector
+  - ResetStaffCount
+  - IncrementStaffCount
   layers:
   - Default
   - TransparentFX
