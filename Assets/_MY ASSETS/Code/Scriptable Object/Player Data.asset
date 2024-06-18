@@ -12,13 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0930021025bfa4c9ad1382555b1c73, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
+  playerDirection: 0
   cooldownStatus: 0
-  grounCheck: 0
+  grounCheck: 1
+  playerTrap: 1
+  grabStatus: 0
+  itemStatus: 0
   playerSpeed: 5
+  playerPosition: {x: 3.228601, y: 2.071, z: -0.72860074}
   rayCastLenght: 1.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   staffTag: Staff
   springTag: Spring
+  fallTag: Fall
   completeTag: Complete
+  trapTag: Trap
+  portalTag: Portal
+  shaderTriggerTag: ShaderTrigger
+  starTag: Star
+  holdTag: Hold
+  bezierCurve: BezierCurve
+  buttonTag: Button
+  transporterTag: Transporter
+  centerPointTag: CenterPoint
+  reverseTag: Reverse
+  doorClosedTag: doorClosed
+  connectorTag: Connector
+  staffResetTag: ResetStaffCount
+  staffIncrementTag: IncrementStaffCount

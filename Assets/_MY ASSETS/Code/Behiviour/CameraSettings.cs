@@ -5,6 +5,9 @@ public class CameraSettings : MonoBehaviour
     public Transform cameraHolder;
     public Camera mainCamera;
 
+    [Header ("<size=15>[SCRIPTABLE OBJECTS]")]
+    public LevelData levelData;
+
     [SerializeField] private Transform traget; 
     public float rotationAngle = 0;
     public float lerpedRotation = 0;
@@ -17,10 +20,16 @@ public class CameraSettings : MonoBehaviour
     public float OrthographicSmoothness = 10f;
 
     [Space]
-    public float minZoomValue = 2;
+    public float minZoomValue = 3;
     public float maxZoomValue = 10;
 
-    
+
+    private void Awake()
+    {
+        maxZoomValue = levelData.levelsInformation[levelData.currentLevel].maxZoomLevel;
+        minZoomValue = levelData.levelsInformation[levelData.currentLevel].minZoomLevel;
+    }
+
     private void Update()
     {
         //lerpedRotation = Mathf.MoveTowards(lerpedRotation, rotationAngle, Time.deltaTime * movementSmoothness);

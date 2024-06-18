@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     UIManager uiManager;
+    StaffManager staffManager;
 
     [Header ("<size=15>[SCRIPTS]")]
     [SerializeField] private CameraSettings cameraSettings;
@@ -40,7 +41,10 @@ public class LevelManager : MonoBehaviour
         {
             currentLevelInfo = levelData.levelsInformation[levelData.currentLevel];
         }
+        
         uiManager = UIManager.instance;
+        staffManager = StaffManager.Instance;
+
         SetupLevel();
         CameraOpeningAnimation();
     }

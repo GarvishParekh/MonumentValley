@@ -12,39 +12,248 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87d281ebbbd8f94b844886804ab6604, type: 3}
   m_Name: Level Data
   m_EditorClassIdentifier: 
-  cameraAnimation: 1
-  currentLevel: 6
+  cameraAnimation: 0
+  groundAnimation: 0
+  currentLevel: 8
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
+    minZoomLevel: 3
     startingZoomLevel: 3.5
+    maxZoomLevel: 6
     levelCenterPoint: {x: 0, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
+  - LevelName: Perpendicular
+    minZoomLevel: 3
+    startingZoomLevel: 3.5
+    maxZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -3, y: 0.85, z: -6}
+  - LevelName: Four
+    minZoomLevel: 3
+    startingZoomLevel: 3.5
+    maxZoomLevel: 6
+    levelCenterPoint: {x: -0.5, y: 0, z: -2}
+    ballSartingposition: {x: -4, y: 0.85, z: -4}
   - LevelName: Pi /2
-    startingZoomLevel: 4
-    levelCenterPoint: {x: -1.5, y: 0, z: -3.75}
-    ballSartingposition: {x: 0, y: 0.8, z: 0}
+    minZoomLevel: 3
+    startingZoomLevel: 3.5
+    maxZoomLevel: 6
+    levelCenterPoint: {x: -2, y: 0, z: -3.5}
+    ballSartingposition: {x: 0, y: 1.353, z: 0}
   - LevelName: Make a turn
-    startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    minZoomLevel: 3
+    startingZoomLevel: 3.5
+    maxZoomLevel: 6
+    levelCenterPoint: {x: -2, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Near to Infinity
-    startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
-    ballSartingposition: {x: 0, y: 0.8, z: 0}
+    minZoomLevel: 3
+    startingZoomLevel: 4
+    maxZoomLevel: 6
+    levelCenterPoint: {x: -1, y: 0, z: -3}
+    ballSartingposition: {x: 0, y: 1.35, z: 0}
   - LevelName: Infinity
-    startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    minZoomLevel: 3
+    startingZoomLevel: 4
+    maxZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -2}
     ballSartingposition: {x: 4, y: 0.8, z: 2}
-  - LevelName: Parabola
+  - LevelName: Six
+    minZoomLevel: 3
+    startingZoomLevel: 4
+    maxZoomLevel: 6
+    levelCenterPoint: {x: -0.5, y: 0, z: -4}
+    ballSartingposition: {x: 1, y: 1.6, z: 0}
+  - LevelName: Alphabet
+    minZoomLevel: 3
+    startingZoomLevel: 4
+    maxZoomLevel: 6
+    levelCenterPoint: {x: 0, y: 0, z: -2}
+    ballSartingposition: {x: -4, y: 0.85, z: 0}
+  - LevelName: Round and Round
+    minZoomLevel: 3
+    startingZoomLevel: 4
+    maxZoomLevel: 6
+    levelCenterPoint: {x: -1.5, y: 0, z: -3.5}
+    ballSartingposition: {x: -4.5, y: 1.35, z: 0}
+  - LevelName: Zic Zac
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -4, y: 0.85, z: 3}
+  - LevelName: Turn 1
+    minZoomLevel: 3
     startingZoomLevel: 3.5
+    maxZoomLevel: 5
+    levelCenterPoint: {x: -1, y: 0, z: -2}
+    ballSartingposition: {x: -3, y: 0.856, z: -4}
+  - LevelName: Turn 2
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: -1, y: 0, z: -3}
+    ballSartingposition: {x: -6, y: 0.48, z: -9.5}
+  - LevelName: Turn 3
+    minZoomLevel: 3
+    startingZoomLevel: 4
+    maxZoomLevel: 6
+    levelCenterPoint: {x: -0.5, y: 0, z: -3}
+    ballSartingposition: {x: -4.5, y: 0.98, z: 0}
+  - LevelName: Down 1
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: 0, y: 1.85, z: 2}
+  - LevelName: Down 2
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: 0, y: 1.85, z: 2}
+  - LevelName: Down 3
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: 0, y: 1.88, z: 2}
+  - LevelName: Down 4
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 4, y: 0, z: 3}
+    ballSartingposition: {x: 0.5, y: -0.65, z: 0}
+  - LevelName: Down 5
+    minZoomLevel: 5.5
+    startingZoomLevel: 6.5
+    maxZoomLevel: 8.5
+    levelCenterPoint: {x: 2.5, y: 0, z: 1}
+    ballSartingposition: {x: 0, y: 1.856, z: 4}
+  - LevelName: Parabola
+    minZoomLevel: 3
+    startingZoomLevel: 3.5
+    maxZoomLevel: 5
     levelCenterPoint: {x: 0, y: 0, z: -3}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
   - LevelName: Its's the pi way
-    startingZoomLevel: 4
-    levelCenterPoint: {x: -1.75, y: 0, z: -4.25}
-    ballSartingposition: {x: 0, y: 0.8, z: 0}
+    minZoomLevel: 3
+    startingZoomLevel: 3.5
+    maxZoomLevel: 5
+    levelCenterPoint: {x: -2, y: 0, z: -3}
+    ballSartingposition: {x: 0, y: 1.8, z: 0}
   - LevelName: Back To Back
+    minZoomLevel: 4
     startingZoomLevel: 5
-    levelCenterPoint: {x: -2.25, y: 0, z: -4.5}
+    maxZoomLevel: 7
+    levelCenterPoint: {x: -1.5, y: 0, z: -3.5}
     ballSartingposition: {x: 0, y: 0.8, z: 0}
+  - LevelName: Focus
+    minZoomLevel: 3
+    startingZoomLevel: 3.5
+    maxZoomLevel: 5
+    levelCenterPoint: {x: -1.5, y: 0, z: -3.5}
+    ballSartingposition: {x: -4.5, y: 1.35, z: 0}
+  - LevelName: Square Brackets
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 0, y: 0, z: -3.5}
+    ballSartingposition: {x: -3.5, y: 0.85, z: 0}
+  - LevelName: Don't give up
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: -1, y: 0, z: -3.5}
+    ballSartingposition: {x: -5.25, y: 2.855, z: 0}
+  - LevelName: Jump Upwards 1
+    minZoomLevel: 3
+    startingZoomLevel: 4
+    maxZoomLevel: 6
+    levelCenterPoint: {x: 1.5, y: -0.75, z: 0}
+    ballSartingposition: {x: -2.5, y: -1.152, z: 0}
+  - LevelName: Jump Upwards 2
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 3, y: 0, z: 0}
+    ballSartingposition: {x: -1, y: 2.363, z: 3.5}
+  - LevelName: Portal
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 1, y: 0, z: 2}
+    ballSartingposition: {x: -4, y: -1.15, z: 0}
+  - LevelName: Next Portal
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 2.5, y: 0, z: -1}
+    ballSartingposition: {x: 0, y: 0.856, z: -4}
+  - LevelName: Ground Rotation 1
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 0.5, y: 0, z: -2.5}
+    ballSartingposition: {x: -6, y: 0.856, z: 0}
+  - LevelName: Ground Rotation 2
+    minZoomLevel: 5.5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: -1, y: 0, z: -3}
+    ballSartingposition: {x: -3, y: 0.856, z: 2}
+  - LevelName: Lift
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 2, y: 0, z: 0}
+    ballSartingposition: {x: -2, y: -2.15, z: 0}
+  - LevelName: Back To Home
+    minZoomLevel: 5.5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: 3, y: 0, z: 3.5}
+    ballSartingposition: {x: 2, y: -2.648, z: 0}
+  - LevelName: Transporter
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 0, y: 0, z: -2.5}
+    ballSartingposition: {x: -4, y: 0.856, z: -0.75}
+  - LevelName: Open the Door
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 0, y: 0, z: -2.5}
+    ballSartingposition: {x: -3.5, y: 0.856, z: 0}
+  - LevelName: Reverse
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: 3.5, y: 0, z: 2.5}
+    ballSartingposition: {x: 0, y: -0.15, z: 0}
+  - LevelName: Ground Moving 1
+    minZoomLevel: 4
+    startingZoomLevel: 5
+    maxZoomLevel: 7
+    levelCenterPoint: {x: -0.5, y: 0, z: -2}
+    ballSartingposition: {x: -4.5, y: 0.48, z: 0}
+  - LevelName: Ground Moving 2
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: -0.5, y: 0, z: -2.5}
+    ballSartingposition: {x: -5, y: 0.48, z: 0}
+  - LevelName: Connect path
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: -1, y: 0, z: -5}
+    ballSartingposition: {x: -6.5, y: 0.48, z: 0}
+  - LevelName: BOSS
+    minZoomLevel: 7
+    startingZoomLevel: 8
+    maxZoomLevel: 10
+    levelCenterPoint: {x: -3, y: 0, z: -5}
+    ballSartingposition: {x: -0.5, y: 0.48, z: 2.5}

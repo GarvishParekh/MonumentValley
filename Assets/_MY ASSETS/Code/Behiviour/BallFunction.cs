@@ -1,34 +1,40 @@
+using System;
 using UnityEngine;
-using System.Collections;
-using Unity.VisualScripting;
 
 public class BallFunction : MonoBehaviour
 {
+    public static Action<Material> TrapActivate;
+    public static Action ResetGround;
+    public static Action BallReset;
+    public static Action<Vector3> TurnBall;
+
     Rigidbody playerRB;
-    WaitForSeconds cooldownTime = new WaitForSeconds(0.2f);
+    
     SFXManager sfxManager;
     UIManager uiManager;
 
+    [Header("<size=15>[SCRIPTABLE OBJECT]")]
     [SerializeField] private LevelData levelData;
-
-    [SerializeField] private SphereCollider myCollider;
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private StaffData staffData;
+
+    [Header("<size=15>[SCRIPT]")]
+    [SerializeField] private LevelManager levelManager;
+
+
+    [Header("<size=15>[COMPONENTS]")]
+    [SerializeField] private SphereCollider myCollider;
     [SerializeField] private Transform ballModel;
     [SerializeField] private Transform shadowModel;
     [SerializeField] private GameObject dropShadow;
-    [SerializeField] private GameObject nextLevelButton;
-
-    [SerializeField] private Vector3 startingPositon;
 
     LevelInformation currentLevelInfo;
-
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
         playerData.grounCheck = GrounCheck.ONGOING;
         playerData.cooldownStatus = CooldownStatus.READY;
-
     }
 
     private void Start()
@@ -49,59 +55,6 @@ public class BallFunction : MonoBehaviour
         UpdatePlayerPosition();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        switch (playerData.cooldownStatus)
-        {
-            case CooldownStatus.READY:
-                if (other.CompareTag(playerData.staffTag))
-                {
-                    playerRB.velocity = -other.transform.forward * playerData.playerSpeed;
-                    playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
-
-                    sfxManager.PlayHitSound();
-
-                    StartCoroutine(nameof(CoolingDown));
-                }
-                else if (other.CompareTag(playerData.springTag))
-                {
-                    // manager velocity
-                    Vector3 lastVelocity = playerRB.velocity;
-                    playerRB.velocity = Vector3.zero;
-
-                    // get jump end point
-                    Vector3 getEndPoint = other.GetComponent<StaffFunction>().GetEndPosition();
-                    playerData.grounCheck = GrounCheck.STOP;
-
-                    // jump animation
-                    LeanTween.move(gameObject.gameObject, getEndPoint, 0.4f).setEaseOutSine();
-                    LeanTween.moveY(ballModel.gameObject, 2f, 0.2f).setEaseOutSine().setLoopPingPong(1).setOnComplete(()=>
-                    {
-                        // restore velocity
-                        playerRB.velocity = lastVelocity;
-                        playerData.grounCheck = GrounCheck.ONGOING;
-                    });
-                    playerData.cooldownStatus = CooldownStatus.COOLINGDOWN;
-
-                    // play sound
-                    sfxManager.PlayJumpSound();
-                    StartCoroutine(nameof(CoolingDown));
-                }
-                break;
-        }
-
-        if (other.CompareTag(playerData.completeTag))
-        {
-            other.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
-            LevelComplete(other.transform.GetChild(0).position);
-        }
-    }
-
-    private IEnumerator CoolingDown()
-    {
-        yield return cooldownTime;
-        playerData.cooldownStatus = CooldownStatus.READY;
-    }
 
     private void GroundCheck()
     {
@@ -115,7 +68,7 @@ public class BallFunction : MonoBehaviour
                     playerRB.useGravity = true;
                     dropShadow.SetActive(false);
                 }
-                break;
+            break;
         }
     }
 
@@ -123,6 +76,16 @@ public class BallFunction : MonoBehaviour
     {
         ResetAnimation();
         StopPlayerMotion();
+
+        if (transform.parent != null)
+        {
+            transform.parent = null;
+        }
+
+        ResetGround?.Invoke();
+        BallReset?.Invoke();
+
+
         playerData.grounCheck = GrounCheck.ONGOING;
         if (currentLevelInfo != null)
         {
@@ -132,6 +95,8 @@ public class BallFunction : MonoBehaviour
         myCollider.isTrigger = true;
         playerRB.isKinematic = true;
         playerRB.isKinematic = false;
+
+        playerData.playerTrap = PlayerTrap.FREE;
     }
 
     private void ResetAnimation()
@@ -176,6 +141,7 @@ public class BallFunction : MonoBehaviour
 
     private void UpdatePlayerPosition()
     {
-        playerData.playerPosition = transform.position; 
+        playerData.playerPosition = transform.position;
     }
 }
+
