@@ -627,6 +627,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayCanvas: {fileID: 652230939}
+  canvasCells:
+  - {fileID: 684574425}
+  - {fileID: 652230940}
+  - {fileID: 695249278}
 --- !u!1 &116126823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1779,7 @@ Transform:
   - {fileID: 624219773}
   - {fileID: 98841697}
   - {fileID: 453070804}
+  - {fileID: 1269669924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &497040187 stripped
@@ -2187,6 +2192,8 @@ GameObject:
   - component: {fileID: 652230936}
   - component: {fileID: 652230935}
   - component: {fileID: 652230939}
+  - component: {fileID: 652230941}
+  - component: {fileID: 652230940}
   m_Layer: 5
   m_Name: Gameplay Canvas
   m_TagString: Untagged
@@ -2302,6 +2309,31 @@ MonoBehaviour:
   nextLevelButton: {fileID: 679706236}
   closingPosition: 200
   animationSpeed: 0.5
+--- !u!114 &652230940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652230934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeedb2978c0b8a49bda8717e9706680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCanvasCellName: 1
+--- !u!225 &652230941
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652230934}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &679700229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4482906026684063489, guid: dcec0a2b422887044997cf8d50b48917,
@@ -2458,13 +2490,15 @@ GameObject:
   - component: {fileID: 684574423}
   - component: {fileID: 684574422}
   - component: {fileID: 684574421}
+  - component: {fileID: 684574426}
+  - component: {fileID: 684574425}
   m_Layer: 5
   m_Name: Background Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &684574421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2548,6 +2582,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &684574425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684574420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeedb2978c0b8a49bda8717e9706680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCanvasCellName: 3
+--- !u!225 &684574426
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684574420}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &687599621
 GameObject:
   m_ObjectHideFlags: 0
@@ -2694,13 +2753,15 @@ GameObject:
   - component: {fileID: 695249275}
   - component: {fileID: 695249274}
   - component: {fileID: 695249277}
+  - component: {fileID: 695249279}
+  - component: {fileID: 695249278}
   m_Layer: 5
   m_Name: End Canvas Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &695249273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2799,6 +2860,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainText: {fileID: 787419939}
   buttonImage: {fileID: 1779592886}
+--- !u!114 &695249278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695249272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeedb2978c0b8a49bda8717e9706680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCanvasCellName: 4
+--- !u!225 &695249279
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695249272}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &698951151
 GameObject:
   m_ObjectHideFlags: 0
@@ -4525,6 +4611,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3203280254867902240}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1269669923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269669924}
+  - component: {fileID: 1269669925}
+  m_Layer: 0
+  m_Name: IngameUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1269669924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269669923}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 489044798}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269669925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269669923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f428e1dfd20569741ad3f4d34283ee0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1272256420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5454,9 +5584,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1483052138}
-        m_TargetAssemblyTypeName: BallFunction, Assembly-CSharp
-        m_MethodName: ResetBall
+      - m_Target: {fileID: 1269669925}
+        m_TargetAssemblyTypeName: IngameUIManager, Assembly-CSharp
+        m_MethodName: BackButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

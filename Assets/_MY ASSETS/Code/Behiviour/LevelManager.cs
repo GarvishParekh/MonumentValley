@@ -32,7 +32,9 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Awake Level Manager");
         levelData.currentLevel = PlayerPrefs.GetInt(ConstantKeys.LEVEL_INDEX, 0);
+        Debug.Log(levelData.currentLevel);
     }
 
     private void Start()
@@ -113,7 +115,7 @@ public class LevelManager : MonoBehaviour
     {
         LeanTween.moveY(mainCamera, cameraData.cameraEndPoint, cameraData.animationSpeed).setEaseInOutSine().setOnComplete(()=>
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         });
     }
 
