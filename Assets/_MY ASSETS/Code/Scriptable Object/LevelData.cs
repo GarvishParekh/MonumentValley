@@ -26,6 +26,7 @@ public class LevelData : ScriptableObject
 
     [Space]
     public int currentLevel = 0;
+    public int maxLevelCount = 0;
     public float animationSpeed = 0.2f;
     public LevelInformation[] levelsInformation;    
 }

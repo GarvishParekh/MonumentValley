@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance;
+
     UIManager uiManager;
     StaffManager staffManager;
 
@@ -32,6 +34,9 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+        levelData.maxLevelCount = Levels.Count;
+
         levelData.currentLevel = PlayerPrefs.GetInt(ConstantKeys.LEVEL_INDEX, 0);
     }
 
@@ -53,9 +58,8 @@ public class LevelManager : MonoBehaviour
     {
         if (levelData.currentLevel >= Levels.Count)
         {
-            commingSoonCanvas.SetActive(true);
-
-            mainCanvas.SetActive(false);
+            //commingSoonCanvas.SetActive(true);
+            //mainCanvas.SetActive(false);
             PlayerPrefs.DeleteKey(ConstantKeys.LEVEL_INDEX);
 
             return;
@@ -113,7 +117,7 @@ public class LevelManager : MonoBehaviour
     {
         LeanTween.moveY(mainCamera, cameraData.cameraEndPoint, cameraData.animationSpeed).setEaseInOutSine().setOnComplete(()=>
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         });
     }
 
