@@ -26,6 +26,10 @@ public class CameraSettings : MonoBehaviour
 
     private void Awake()
     {
+        if (levelData.currentLevel >= levelData.maxLevelCount)
+        {
+            return;
+        }
         maxZoomValue = levelData.levelsInformation[levelData.currentLevel].maxZoomLevel;
         minZoomValue = levelData.levelsInformation[levelData.currentLevel].minZoomLevel;
     }

@@ -126,7 +126,10 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: b8f6066713c14e14e89f8c6f81e2f383, type: 2}
   mainClick: {fileID: 0}
   levelData: {fileID: 11400000, guid: 702e024aa487cb142b6f511431b9df63, type: 2}
+  siblingParent: {fileID: 0}
   jumpEndPoint: {fileID: 0}
+  dropSpeed: 0.4
+  staffIndex: 0
 --- !u!1 &5424133252781775142
 GameObject:
   m_ObjectHideFlags: 0

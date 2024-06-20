@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
         {
             if (canvasToOpen == cell.GetCanvasName())
             {
+                Debug.Log(canvasToOpen);
                 cell.OpenCanvas();
             }
             else
