@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87d281ebbbd8f94b844886804ab6604, type: 3}
   m_Name: Level Data
   m_EditorClassIdentifier: 
-  cameraAnimation: 1
+  cameraAnimation: 0
   groundAnimation: 0
-  currentLevel: 44
-  maxLevelCount: 45
+  currentLevel: 55
+  maxLevelCount: 56
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -288,3 +288,75 @@ MonoBehaviour:
     maxZoomLevel: 8
     levelCenterPoint: {x: 0.5, y: 0, z: -2.5}
     ballSartingposition: {x: -6.5, y: 0.48, z: 0.5}
+  - LevelName: Turn 9
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: 0.5, y: 0, z: -2.5}
+    ballSartingposition: {x: -4.5, y: 0.48, z: 0.5}
+  - LevelName: Turn 10
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: 0, y: 0, z: -1.5}
+    ballSartingposition: {x: -5, y: 0.48, z: 2.5}
+  - LevelName: Turn 11
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: 0.5, y: 0, z: -3}
+    ballSartingposition: {x: -4.5, y: 0.48, z: 2}
+  - LevelName: Turn 12
+    minZoomLevel: 7
+    startingZoomLevel: 8
+    maxZoomLevel: 10
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -8.5, y: 0.48, z: 0.5}
+  - LevelName: Turn 13
+    minZoomLevel: 7
+    startingZoomLevel: 10
+    maxZoomLevel: 12
+    levelCenterPoint: {x: 0, y: 0, z: -3}
+    ballSartingposition: {x: -9.5, y: 0.48, z: 3.5}
+  - LevelName: Down 6
+    minZoomLevel: 7
+    startingZoomLevel: 8
+    maxZoomLevel: 10
+    levelCenterPoint: {x: 2, y: 0, z: 0.5}
+    ballSartingposition: {x: 0, y: 0.48, z: 5}
+  - LevelName: Down 7
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: 2, y: 0, z: 1}
+    ballSartingposition: {x: 2, y: 0.48, z: -1}
+  - LevelName: Down 8
+    minZoomLevel: 5
+    startingZoomLevel: 6
+    maxZoomLevel: 8
+    levelCenterPoint: {x: 2, y: 0, z: 0}
+    ballSartingposition: {x: -2.5, y: 0.48, z: -1}
+  - LevelName: Down 9
+    minZoomLevel: 7
+    startingZoomLevel: 8
+    maxZoomLevel: 10
+    levelCenterPoint: {x: 4.5, y: 0, z: 4.5}
+    ballSartingposition: {x: 4, y: 0.48, z: 6}
+  - LevelName: Down 10
+    minZoomLevel: 7
+    startingZoomLevel: 8
+    maxZoomLevel: 10
+    levelCenterPoint: {x: 4.5, y: 0, z: 2.5}
+    ballSartingposition: {x: -1, y: 0.48, z: 4}
+  - LevelName: Down 11
+    minZoomLevel: 7
+    startingZoomLevel: 8
+    maxZoomLevel: 10
+    levelCenterPoint: {x: 4.5, y: 0, z: 4.5}
+    ballSartingposition: {x: 0, y: 0.48, z: 0}
+  - LevelName: Down 12
+    minZoomLevel: 7
+    startingZoomLevel: 8
+    maxZoomLevel: 10
+    levelCenterPoint: {x: 5.5, y: 0, z: 4.5}
+    ballSartingposition: {x: 2, y: 0.48, z: 6.5}
