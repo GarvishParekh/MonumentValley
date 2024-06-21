@@ -354,3 +354,9 @@ MonoBehaviour:
     maxZoomLevel: 10
     levelCenterPoint: {x: 4.5, y: 0, z: 4.5}
     ballSartingposition: {x: 0, y: 0.48, z: 0}
+  - LevelName: Down 12
+    minZoomLevel: 7
+    startingZoomLevel: 8
+    maxZoomLevel: 10
+    levelCenterPoint: {x: 5.5, y: 0, z: 4.5}
+    ballSartingposition: {x: 2, y: 0.48, z: 6.5}
