@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelBtn : MonoBehaviour
 {
     public int levelIndex;
+    public TMP_Text levelIndexTxt;
     
     public LevelData levelData;
     
@@ -16,6 +18,8 @@ public class LevelBtn : MonoBehaviour
         levelIndex = transform.GetSiblingIndex();
 
         myButton.onClick.AddListener(SetLevelIndex);
+        int tempIndex = levelIndex + 1;
+        levelIndexTxt.text = tempIndex.ToString();
     }
 
     private void SetLevelIndex()
