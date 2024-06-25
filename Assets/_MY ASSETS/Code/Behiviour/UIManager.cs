@@ -21,6 +21,14 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        if (gameplayCanvas != null)
+        {
+            gameplayCanvas.StartingAnimation();
+        }
+    }
+
     public void OpenCanvas(CanvasCellName canvasToOpen)
     {
         foreach (CanvasCell cell in canvasCells)
@@ -36,14 +44,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
-    private void Start()
-    {
-        if (gameplayCanvas != null)
-        {
-            gameplayCanvas.StartingAnimation();
-        }
-    }
+    
 
     public void LevelCompleteUpdate()
     {
