@@ -88,14 +88,14 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
             case AnimationType.POOL_STICK:
                 if (mycollider != null)
                 {
-                    mycollider.enabled = true;
+                    //mycollider.enabled = true;
                 }
 
                 LeanTween.moveLocalZ(gameObject, 1.2f, levelData.animationSpeed).setEaseInSine().setLoopPingPong(1).setOnComplete(()=> 
                 {
                     if (mycollider != null)
                     {
-                        mycollider.enabled = false;
+                        //mycollider.enabled = false;
                     }
                 });
                 return;
@@ -147,10 +147,12 @@ public class StaffFunction : MonoBehaviour, IOneClickAnimation
             case AnimationType.POOL_STICK:
                     if (_index != staffIndex)
                     {
+                        mycollider.enabled = false;
                         LeanTween.scale(parentObject.gameObject, Vector3.zero, staffData.endAnimationSpeed).setEaseInOutSine();
                         return;
                     }
 
+                    mycollider.enabled = true;
                     LeanTween.scale(parentObject.gameObject, Vector3.one, staffData.startAnimationSpeed).setEaseInOutSine();
                     sfxManager.PlayStaffGrowSound();
                 break;

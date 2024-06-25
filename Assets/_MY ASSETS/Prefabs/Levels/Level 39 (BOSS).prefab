@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124892640316433164}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -466,6 +466,11 @@ PrefabInstance:
       propertyPath: staffIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1403528795323677889, guid: de0a4e7bac6911c469b49e7e265b244c,
+        type: 3}
+      propertyPath: siblingParent
+      value: 
+      objectReference: {fileID: 1468576289300302297}
     - target: {fileID: 1775290611562412203, guid: de0a4e7bac6911c469b49e7e265b244c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3640,6 +3645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ground Holder (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160806986932139681, guid: e76692e50ed90544aa2bfb803dc38010,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3657891547792803894, guid: e76692e50ed90544aa2bfb803dc38010,
         type: 3}
