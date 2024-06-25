@@ -17,3 +17,4 @@ MonoBehaviour:
   levelCompleteSound: {fileID: 8300000, guid: 33e95778c7cf27e4eb7a555a170a3b85, type: 3}
   jumpSound: {fileID: 8300000, guid: 345effca3fa6ca743a6cb8aa8b505522, type: 3}
   staffGrowSound: {fileID: 8300000, guid: 44ee02c60badc954398b8e51c0757869, type: 3}
+  starCollectionSound: {fileID: 8300000, guid: dc5555add7d88264d9e30238025d3330, type: 3}
