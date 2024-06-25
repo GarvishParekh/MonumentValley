@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87d281ebbbd8f94b844886804ab6604, type: 3}
   m_Name: Level Data
   m_EditorClassIdentifier: 
-  cameraAnimation: 0
+  cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 55
-  maxLevelCount: 56
+  currentLevel: 19
+  maxLevelCount: 57
   animationSpeed: 0.15
   levelsInformation:
   - LevelName: Line
@@ -137,19 +137,19 @@ MonoBehaviour:
     startingZoomLevel: 3.5
     maxZoomLevel: 5
     levelCenterPoint: {x: 0, y: 0, z: -3}
-    ballSartingposition: {x: 0, y: 0.8, z: 0}
+    ballSartingposition: {x: 0, y: 0.48, z: 0}
   - LevelName: Its's the pi way
     minZoomLevel: 3
     startingZoomLevel: 3.5
     maxZoomLevel: 5
     levelCenterPoint: {x: -2, y: 0, z: -3}
-    ballSartingposition: {x: 0, y: 1.8, z: 0}
+    ballSartingposition: {x: 0, y: 0.48, z: 0}
   - LevelName: Back To Back
     minZoomLevel: 4
     startingZoomLevel: 5
     maxZoomLevel: 7
     levelCenterPoint: {x: -1.5, y: 0, z: -3.5}
-    ballSartingposition: {x: 0, y: 0.8, z: 0}
+    ballSartingposition: {x: 0, y: 0.48, z: 0}
   - LevelName: Focus
     minZoomLevel: 3
     startingZoomLevel: 3.5
