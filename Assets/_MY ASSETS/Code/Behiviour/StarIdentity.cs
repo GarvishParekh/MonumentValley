@@ -84,7 +84,7 @@ public class StarIdentity : MonoBehaviour
     [ContextMenu("NOTE PLAYERPREF TAG")]
     private void NotePlayerPref()
     {
-        playerPrefTag = transform.parent.name + "_" + transform.GetSiblingIndex().ToString();
+        playerPrefTag = transform.parent.parent.name + "_" + transform.GetSiblingIndex().ToString();
     }
 
     private void OnTriggerEnter(Collider other)
