@@ -6,6 +6,7 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private SoundData soundData;
     [SerializeField] private AudioSource audioSourceMid;
     [SerializeField] private AudioSource audioSourceLow;
+    [SerializeField] private AudioSource audioSourceStar;
 
     private void Awake()
     {
@@ -30,5 +31,10 @@ public class SFXManager : MonoBehaviour
     public void PlayStaffGrowSound()
     {
         audioSourceLow.PlayOneShot(soundData.staffGrowSound);
+    }
+
+    public void PlayStarCollectionSound()
+    {
+        audioSourceStar.PlayOneShot(soundData.starCollectionSound);
     }
 }

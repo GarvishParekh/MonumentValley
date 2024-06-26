@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: 1
   groundAnimation: 0
-  currentLevel: 56
+  currentLevel: 37
   maxLevelCount: 57
   animationSpeed: 0.15
   levelsInformation:
@@ -241,7 +241,7 @@ MonoBehaviour:
     levelCenterPoint: {x: -0.5, y: 0, z: -2}
     ballSartingposition: {x: -4.5, y: 0.48, z: 0}
   - LevelName: Ground Moving 2
-    minZoomLevel: 5
+    minZoomLevel: 5.5
     startingZoomLevel: 6
     maxZoomLevel: 8
     levelCenterPoint: {x: -0.5, y: 0, z: -2.5}

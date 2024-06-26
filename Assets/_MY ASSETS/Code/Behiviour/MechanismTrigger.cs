@@ -162,8 +162,8 @@ public class MechanismTrigger : MonoBehaviour
                 //Star Collect...
                 else if (other.CompareTag(playerData.starTag))
                 {
-                    StarIdentity starIdentity = other.GetComponentInParent<StarIdentity>();
-                    starIdentity.starStatus = StarStatus.Collected;
+                    //StarIdentity starIdentity = other.GetComponentInParent<StarIdentity>();
+                    //starIdentity.starStatus = StarStatus.Collected;
                 }
 
                 //Ground Rotate Effect
