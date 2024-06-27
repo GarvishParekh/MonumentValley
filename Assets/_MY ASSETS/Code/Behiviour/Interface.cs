@@ -4,6 +4,7 @@ public interface ICanvasAnimation
     public void ClosingAnimation();
     public void UpdateAnimation();
     public void ResetElements();
+    public void LevelFailed();
 }
 
 public interface IOneClickAnimation

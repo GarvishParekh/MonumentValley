@@ -51,6 +51,11 @@ public class UIManager : MonoBehaviour
         gameplayCanvas.UpdateAnimation();
     }
 
+    public void LevelFailAnimation()
+    {
+        gameplayCanvas.LevelFailed();
+    }
+
     public void LevelEndAnimation()
     {
         gameplayCanvas.ClosingAnimation();

@@ -49,4 +49,9 @@ public class GameplayCanvasAnimation : MonoBehaviour, ICanvasAnimation
     {
         LeanTween.moveLocalY(nextLevelButton, 0, animationSpeed).setEaseInOutSine();
     }
+
+    public void LevelFailed()
+    {
+        LeanTween.scale(restartButton, Vector3.one * 0.5f, 0.25f).setEaseInOutSine().setLoopPingPong(3);
+    }
 }

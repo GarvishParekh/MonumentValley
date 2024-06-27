@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BallFunction : MonoBehaviour
 {
+    public static Action LevelCleared;
     public static Action<Material> TrapActivate;
     public static Action ResetGround;
     public static Action BallReset;
@@ -115,9 +116,11 @@ public class BallFunction : MonoBehaviour
         playerRB.transform.position = finalPosition;
 
         dropShadow?.SetActive(true);
-        uiManager.LevelCompleteUpdate();
+        
 
         sfxManager.PlayLevelCompleteSound();
+
+        LevelCleared?.Invoke();
     }
 
     private void StopPlayerMotion()

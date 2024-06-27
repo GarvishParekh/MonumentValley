@@ -3,19 +3,28 @@ using UnityEngine;
 public class StarIdentity : MonoBehaviour
 {
     SFXManager sfxManager;
-    private enum LifeStatus
-    {
-        ALIVE,
-        CONSUMED
-    }
-    private LifeStatus lifeStatus;
-    private GameObject star;
     private float degree = 0;
 
     Vector3 starPosition;
     float sineWave = 0;
 
+    private enum CollectedStatus
+    {
+        NO,
+        YES
+    }
 
+    private enum ConsumedStatus
+    {
+        NO,
+        YES
+    }
+    [SerializeField] private CollectedStatus collectedStatus;
+    [SerializeField] private ConsumedStatus consumedStatus;
+
+    [Space]
+    [SerializeField] private GameObject star;
+    [SerializeField] private GameObject startMeshHolder;
     [SerializeField] private float rotationSpeed;
 
     [Space]
@@ -23,23 +32,33 @@ public class StarIdentity : MonoBehaviour
     [SerializeField] private float waveHeight = 1;
     [SerializeField] private float heightOffset = 0;
 
+    [Space]
     [SerializeField] private string playerPrefTag = string.Empty;
 
+    private void OnEnable()
+    {
+        BallFunction.LevelCleared += OnLevelComplete;
+        BallFunction.ResetGround += OnLevelReset;   
+    }
+
+    private void OnDisable()
+    {
+        BallFunction.LevelCleared -= OnLevelComplete;
+        BallFunction.ResetGround -= OnLevelReset;   
+    }
 
     private void Awake()
     {
-        star = transform.GetChild(0).gameObject;
+        SetPlayerPref();
+        SetConsumedStatus();
 
-        NotePlayerPref();
-        SetLifeStatus();
-
-        switch (lifeStatus)
+        switch (consumedStatus)
         {
-            case LifeStatus.ALIVE:
-                this.gameObject.SetActive(true);
-                break;
-            case LifeStatus.CONSUMED:
+            case ConsumedStatus.YES:
                 this.gameObject.SetActive(false);
+                break;
+            case ConsumedStatus.NO:
+                this.gameObject.SetActive(true);
                 break;
         }
     }
@@ -49,15 +68,15 @@ public class StarIdentity : MonoBehaviour
         sfxManager = SFXManager.instance;
     }
 
-    private void SetLifeStatus()
+    private void SetConsumedStatus()
     {
         int lifeInt = PlayerPrefs.GetInt(playerPrefTag, 0);
         
         if (lifeInt == 0)
-            lifeStatus = LifeStatus.ALIVE;
+            consumedStatus = ConsumedStatus.NO;
         
         else if (lifeInt == 1)
-            lifeStatus = LifeStatus.CONSUMED;
+            consumedStatus = ConsumedStatus.YES;
     }
 
     private void Update()
@@ -82,7 +101,7 @@ public class StarIdentity : MonoBehaviour
     }
 
     [ContextMenu("NOTE PLAYERPREF TAG")]
-    private void NotePlayerPref()
+    private void SetPlayerPref()
     {
         playerPrefTag = transform.parent.parent.name + "_" + transform.GetSiblingIndex().ToString();
     }
@@ -91,10 +110,9 @@ public class StarIdentity : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerPrefs.SetInt(playerPrefTag, 1);
-            AddCountToLevel();
+            collectedStatus = CollectedStatus.YES;
 
-            this.gameObject.SetActive(false);
+            startMeshHolder.SetActive(false);
             sfxManager.PlayStarCollectionSound();
         }
     }
@@ -104,5 +122,28 @@ public class StarIdentity : MonoBehaviour
         int currentUnlockCount = PlayerPrefs.GetInt(ConstantKeys.LEVEL_UNLOCKED, 0);
         currentUnlockCount += 1;
         PlayerPrefs.SetInt(ConstantKeys.LEVEL_UNLOCKED, currentUnlockCount);
+    }
+
+    private void OnLevelComplete()
+    {
+        switch (collectedStatus)
+        {
+            case CollectedStatus.YES:
+                PlayerPrefs.SetInt(playerPrefTag, 1);
+                consumedStatus = ConsumedStatus.YES;
+                AddCountToLevel();
+                break;
+        }
+    }
+
+    private void OnLevelReset()
+    {
+        switch (consumedStatus)
+        {
+            case ConsumedStatus.NO:
+                collectedStatus = CollectedStatus.NO;
+                startMeshHolder.SetActive(true);
+                break;
+        }
     }
 }
